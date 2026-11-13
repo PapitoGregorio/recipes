@@ -30,8 +30,14 @@ section.tab{display:none} section.tab.active{display:block}
 .card .more span{border-bottom:2px solid var(--accent);padding-bottom:2px}
 footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
 .searchbar{max-width:560px;margin:26px auto 0;padding:0 24px}
-.searchbar input{width:100%;font:inherit;font-size:16px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);outline:none}
+.searchwrap{position:relative}
+.searchbar input{width:100%;font:inherit;font-size:16px;padding:12px 46px 12px 18px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);outline:none}
 .searchbar input:focus{border-color:var(--accent)}
+.searchbar input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.searchclear{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:none;border-radius:50%;background:transparent;color:var(--muted);font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.searchclear:hover{color:var(--accent)}
+.searchclear:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.searchclear[hidden]{display:none}
 .results{max-width:760px;margin:14px auto 0;padding:0 24px;display:none}
 .results a{display:flex;justify-content:space-between;gap:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 18px;margin-bottom:8px;text-decoration:none}
 .results a:hover{border-color:var(--accent)}
@@ -48,8 +54,8 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
   <h1>Recipes</h1>
   <p>Gregorio's recipes — private collection. Pick a tab, every recipe shows right here. Tap one and it opens full-page in a new window.</p>
 </header>
-<div class="searchbar"><input id="search" type="search" placeholder="Search all recipes…" aria-label="Search all recipes"></div>
-<div class="results" id="results"></div>
+<div class="searchbar"><div class="searchwrap"><input id="search" type="search" placeholder="Search all recipes…" aria-label="Search all recipes" role="combobox" aria-expanded="false" aria-controls="results" aria-autocomplete="list"><button type="button" id="search-clear" class="searchclear" aria-label="Clear search" hidden>&times;</button></div></div>
+<div class="results" id="results" role="listbox" aria-label="Search results"></div>
 <nav class="tabs main">
   <button data-tab="savory" class="active">Savory</button>
   <button data-tab="breakfast">Breakfast</button>
@@ -407,15 +413,40 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
   const SEARCH_INDEX = /*SEARCH-INDEX-START*/[{"t": "Lemongrass Basil Chicken Stir Fry", "c": "Savory", "u": "cookbox/recipes/lemongrass-basil-chicken-stir-fry.html"}, {"t": "Cuban Black Beans", "c": "Savory", "u": "cookbox/recipes/cuban-black-beans.html"}, {"t": "Ritz Cracker Meatloaf", "c": "Savory", "u": "cookbox/recipes/ritz-cracker-meatloaf.html"}, {"t": "Cornbread", "c": "Savory", "u": "cookbox/recipes/instant-pot-cornbread.html"}, {"t": "Pesto Fish", "c": "Savory", "u": "cookbox/recipes/pesto-fish.html"}, {"t": "Jambalaya", "c": "Savory", "u": "cookbox/recipes/instant-pot-jambalaya.html"}, {"t": "Salsa (Canned)", "c": "Savory", "u": "cookbox/recipes/salsa-canned.html"}, {"t": "Pancake Mix", "c": "Breakfast", "u": "cookbox/recipes/pancake-mix.html"}, {"t": "Pancakes", "c": "Breakfast", "u": "cookbox/recipes/pancakes.html"}, {"t": "Low Carb Nut Bars", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/low-carb-nut-bars.html"}, {"t": "No-Bake Keto Granola Bars", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/no-bake-keto-granola-bars.html"}, {"t": "5-Ingredient Protein Bars (No-Bake)", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/5-ingredient-protein-bars.html"}, {"t": "Protein Bars (Low Carb & Sugar Free)", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/protein-bars-low-carb.html"}, {"t": "Keto Granola Bars with Coconut", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/keto-granola-bars-with-coconut.html"}, {"t": "Keto Chocolate Protein Bars (Nut Free)", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/keto-chocolate-protein-bars.html"}, {"t": "Date Rice Cakes", "c": "Cycling Recipes · Solid", "u": "cycling-food/#date-rice-cakes"}, {"t": "High Carb Energy Balls", "c": "Cycling Recipes · Solid", "u": "cycling-food/#high-carb-energy-balls"}, {"t": "Maple Cinnamon Oat Recovery Bars", "c": "Cycling Recipes · Solid", "u": "cycling-food/#maple-cinnamon-oat-recovery-bars"}, {"t": "Savory Potato Cakes", "c": "Cycling Recipes · Solid", "u": "cycling-food/#savory-potato-cakes"}, {"t": "Sweet Potato Oat Bars", "c": "Cycling Recipes · Solid", "u": "cycling-food/#sweet-potato-oat-bars"}, {"t": "Sweet Potato Oat Cakes", "c": "Cycling Recipes · Solid", "u": "cycling-food/#sweet-potato-oat-cakes"}, {"t": "Sweet Potato Rice Cakes", "c": "Cycling Recipes · Solid", "u": "cycling-food/#sweet-potato-rice-cakes"}, {"t": "Tour de France Rice Cakes", "c": "Cycling Recipes · Solid", "u": "cycling-food/#tour-de-france-rice-cakes"}, {"t": "Apple Date Energy Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#apple-date-energy-gel"}, {"t": "Beet & Honey Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#beet-and-honey-gel"}, {"t": "Grape Molasses Energy Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#grape-molasses-energy-gel"}, {"t": "Mango Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#mango-gel"}, {"t": "Molasses Apple Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#molasses-apple-gel"}, {"t": "Orange Fruit Spread Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#orange-fruit-spread-gel"}, {"t": "Orange Maple Honey Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#orange-maple-honey-gel"}, {"t": "Peach & Honey Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#peach-and-honey-gel"}, {"t": "Pineapple Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#pineapple-gel"}, {"t": "Watermelon Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#watermelon-gel"}, {"t": "Watermelon Lime Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#watermelon-lime-gel"}, {"t": "Natural Electrolyte Drink", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#natural-electrolyte-drink"}, {"t": "Pre-Workout Energy Drink", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#pre-workout-energy-drink"}, {"t": "Tart Cherry Recovery Drink", "c": "Cycling Recipes · Liquid", "u": "cycling-food/#tart-cherry-recovery-drink"}]/*SEARCH-INDEX-END*/;
   const searchInput = document.getElementById('search');
   const resultsBox = document.getElementById('results');
-  searchInput.addEventListener('input', function () {
-    const q = searchInput.value.trim().toLowerCase();
-    if (!q) { resultsBox.style.display = 'none'; resultsBox.innerHTML = ''; return; }
-    const hits = SEARCH_INDEX.filter(function (r) { return r.t.toLowerCase().includes(q); }).slice(0, 12);
-    resultsBox.innerHTML = hits.length
-      ? hits.map(function (r) { return '<a href="' + r.u + '" target="_blank" rel="noopener"><span class="rt">' + r.t + '</span><span class="rc">' + r.c + '</span></a>'; }).join('')
-      : '<div class="none">No recipes match that — try another word.</div>';
+  const clearBtn = document.getElementById('search-clear');
+  function closeResults() {
+    resultsBox.style.display = 'none';
+    resultsBox.innerHTML = '';
+    searchInput.setAttribute('aria-expanded', 'false');
+  }
+  function openResults(html) {
+    resultsBox.innerHTML = html;
     resultsBox.style.display = 'block';
+    searchInput.setAttribute('aria-expanded', 'true');
+  }
+  searchInput.addEventListener('input', function () {
+    clearBtn.hidden = !searchInput.value;
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) { closeResults(); return; }
+    const hits = SEARCH_INDEX.filter(function (r) { return r.t.toLowerCase().includes(q); }).slice(0, 12);
+    openResults(hits.length
+      ? hits.map(function (r) { return '<a href="' + r.u + '"><span class="rt">' + r.t + '</span><span class="rc">' + r.c + '</span></a>'; }).join('')
+      : '<div class="none">No recipes match that — try another word.</div>');
   });
+  clearBtn.addEventListener('click', function () {
+    searchInput.value = '';
+    clearBtn.hidden = true;
+    closeResults();
+    searchInput.focus();
+  });
+  searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeResults(); }
+  });
+  document.addEventListener('scroll', function (e) {
+    if (resultsBox.style.display !== 'block') { return; }
+    if (e.target && resultsBox.contains(e.target)) { return; }
+    closeResults();
+  }, true);
 </script>
 <script>
   document.querySelectorAll('nav.main button').forEach(function (btn) {
