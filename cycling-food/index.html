@@ -1,218 +1,245 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow, noarchive">
-<title>Cycling Recipes — Papito's Kitchen</title>
-<!--
-  Gift recipe book built 2026-11-09 for Gregorio Ramirez.
-  All 22 recipes are from the PUBLIC recipe data on drewaddis.com
-  (the same structured data the site publishes for search engines,
-  plus each recipe's public photo). No membership account was used.
-  Tabs: Cover / Gels (11) / Solids (8) / Drinks (3).
-  Photos load from drewaddis.com, so the book needs internet to show them.
-  EDIT: the gift note on the cover is marked EDIT below.
--->
-<style>
- *{margin:0;padding:0;box-sizing:border-box}
- body{font-family:Georgia,'Times New Roman',serif;background:#faf6ef;color:#262019}
- header.cover{text-align:center;padding:72px 24px 48px;background:linear-gradient(160deg,#fdf3e3,#f7e3c3)}
- header.cover .kicker{font-family:Helvetica,Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;font-size:12px;color:#a05a2c}
- header.cover h1{font-size:clamp(38px,6vw,64px);margin:14px 0 10px}
- header.cover p{font-size:19px;max-width:560px;margin:0 auto;line-height:1.55}
- .gift-note{margin:26px auto 0;max-width:480px;background:#fff;border:1px dashed #c99a5b;border-radius:12px;padding:18px 22px;font-style:italic}
- nav.tabs{position:sticky;top:0;background:#262019;display:flex;justify-content:center;gap:6px;padding:10px;z-index:5;flex-wrap:wrap}
- nav.tabs button{font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;background:transparent;color:#f3e7d3;border:1px solid #57493a;border-radius:999px;padding:9px 20px;cursor:pointer}
- nav.tabs button.active{background:#e8873a;border-color:#e8873a;color:#fff}
- main{max-width:1060px;margin:0 auto;padding:36px 20px 60px}
- section.tab{display:none} section.tab.active{display:block}
- .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px}
- .card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 3px 14px rgba(60,40,10,.10);display:flex;flex-direction:column}
- .card img{width:100%;aspect-ratio:1/1;object-fit:cover}
- .card .body{padding:20px 22px 24px}
- .meta{display:flex;gap:10px;align-items:center;font-family:Helvetica,Arial,sans-serif;font-size:12px}
- .badge{background:#e8873a;color:#fff;border-radius:999px;padding:3px 10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
- .yield{color:#7a6a55;font-weight:600}
- .card h3{font-size:23px;margin:10px 0 12px;line-height:1.2}
- .card h4{font-family:Helvetica,Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#a05a2c;margin:14px 0 6px}
- .card ul,.card ol{margin-left:20px;line-height:1.5;font-size:15.5px}
- .note{font-size:13.5px;font-style:italic;color:#7a6a55;margin-top:10px}
- .src{font-size:12.5px;color:#9a8a74;margin-top:16px;font-family:Helvetica,Arial,sans-serif}
- .src a{color:#a05a2c}
- footer{text-align:center;padding:28px;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#9a8a74}
- @media print{nav.tabs{display:none} section.tab{display:block}}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cycling Recipes — Papito's Kitchen</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1f1d1c;--muted:#736f6d;--line:#e7e2dc;--accent:#b4552d;--bg:#ffffff}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:inherit}
+header.site{max-width:1080px;margin:0 auto;padding:56px 24px 8px;text-align:center}
+header.site .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:16px;color:var(--accent);font-weight:700;text-decoration:none}
+header.site h1{font-size:clamp(40px,6vw,64px);font-weight:800;letter-spacing:-.02em;margin:12px 0 10px}
+header.site p{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto;line-height:1.55}
+nav.tabs{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);display:flex;justify-content:center;gap:6px;padding:12px 10px;z-index:5;flex-wrap:wrap;margin-top:28px}
+nav.tabs button{font:inherit;font-size:15px;font-weight:600;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:9px 20px;cursor:pointer}
+nav.tabs button.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.searchbar{max-width:560px;margin:26px auto 0;padding:0 24px}
+.searchbar input{width:100%;font:inherit;font-size:16px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);outline:none}
+.searchbar input:focus{border-color:var(--accent)}
+main{max-width:1080px;margin:0 auto;padding:34px 24px 70px}
+.list{display:flex;flex-direction:column;gap:26px}
+.card{display:flex;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;height:224px;text-decoration:none;transition:border-color .15s ease,transform .15s ease}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card img{width:308px;min-width:308px;height:100%;object-fit:cover}
+.card .txt{flex:1;padding:22px 26px;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.card .meta{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.card h2{font-size:25px;line-height:1.2;margin:8px 0 8px;letter-spacing:-.01em}
+.card .preview{color:var(--muted);font-size:15.5px;line-height:1.55;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.card .more{margin-top:auto;padding-top:10px;font-weight:700;font-size:15px;color:var(--ink)}
+.card .more span{border-bottom:2px solid var(--accent);padding-bottom:2px}
+.empty{display:none;text-align:center;color:var(--muted);padding:56px 20px;font-size:17px;border:1px dashed var(--line);border-radius:16px}
+footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+/* recipe page */
+.hero{width:100%;max-height:460px;object-fit:cover;display:block}
+article.recipe{max-width:700px;margin:0 auto;padding:42px 24px 70px;text-align:center}
+article.recipe .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:12px;color:var(--accent);font-weight:700}
+article.recipe h1{font-size:clamp(32px,5vw,48px);letter-spacing:-.02em;line-height:1.12;margin:12px 0 10px}
+article.recipe .meta{color:var(--muted);font-size:15px}
+article.recipe .intro{color:var(--muted);font-size:17px;line-height:1.6;margin:18px auto 6px;max-width:600px}
+article.recipe h2{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:38px 0 14px}
+article.recipe ul,article.recipe ol{text-align:left;max-width:560px;margin:0 auto;line-height:1.65;font-size:16.5px;padding-left:22px}
+article.recipe li{margin-bottom:7px}
+article.recipe .note{color:var(--muted);font-style:italic;font-size:14.5px;line-height:1.6;max-width:560px;margin:26px auto 0}
+article.recipe .src{color:var(--muted);font-size:13px;margin-top:22px}
+article.recipe .src a{color:var(--accent)}
+.back{display:inline-block;margin-top:40px;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px}
+@media (max-width:680px){
+ .card{flex-direction:column;height:auto}
+ .card img{width:100%;min-width:0;height:190px}
+ .card .preview{-webkit-line-clamp:3}
+}
 </style></head><body>
-<header class="cover">
-  <div class="kicker">Homemade endurance fuel</div>
+<header class="site">
+  <a class="kicker" href="../index.html">Papito's Kitchen</a>
   <h1>Cycling Recipes</h1>
-  <p>DIY gels, ride food and recovery drinks made from familiar ingredients — the recipe collection of Drew Addis, gathered into one little book.</p>
-  <!-- EDIT: gift note -->
-  <div class="gift-note">For you — to fuel the long rides. Enjoy!<br>— with love</div>
+  <p>Ride food and drinks — bars, gels, rice cakes, recovery drinks. Tap one and it opens on its own page.</p>
 </header>
 <nav class="tabs">
-  <button data-tab="Solid" class="active">Solid (10)</button>
-  <button data-tab="Liquid">Liquid (8)</button>
+  <button data-tab="solid" class="active">Solid (10)</button>
+  <button data-tab="liquid">Liquid (8)</button>
 </nav>
 <main>
-  <section class="tab active" id="Solid"><div class="grid"><article class="card" data-cat="Solid" id="high-carb-energy-balls">
-  <img loading="lazy" src="assets/high-carb-energy-balls.webp" alt="High Carb Energy Balls">
-  <div class="body">
-    <div class="meta"><span class="badge">Solid</span><span class="yield">Makes 10 balls</span></div>
-    <h3>High Carb Energy Balls</h3>
-    <h4>Ingredients</h4><ul><li>10 deglet noor dates - 60g carbs</li><li>1/2 cup - Rolled oats - 27g carbs</li><li>1 tbsp - Maple sugar - 13g carbs</li><li>1/2 tsp - Vanilla extract </li><li>Sprinkle of cinnamon</li><li>Pinch of salt</li></ul>
-    <h4>Method</h4><ol><li>Blend dates in a food processor until they form a sticky paste</li><li>Add oats, maple sugar, vanilla, cinnamon, and salt and pulse until the mixture comes together and holds its shape when pressed</li><li>Roll into small balls roughly the size of a golf ball</li><li>Place on a parchment-lined tray and refrigerate for 30 minutes to firm up</li><li>Store in the fridge for up to 7 days or freeze for up to 1 month</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/date-and-oat-energy-bites/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Solid" id="maple-cinnamon-oat-recovery-bars">
-  <img loading="lazy" src="assets/maple-cinnamon-oat-recovery-bars.webp" alt="Maple Cinnamon Oat Recovery Bars">
-  <div class="body">
-    <div class="meta"><span class="badge">Solid</span><span class="yield">Makes 6 bars</span></div>
-    <h3>Maple Cinnamon Oat Recovery Bars</h3>
-    <h4>Ingredients</h4><ul><li>2 cups - Rolled oats - 108g carbs</li><li>1 - Banana - 27g carbs</li><li>3 tbsp - Maple syrup - 40g carbs</li><li>2 tbsp - Raw honey - 34g carbs</li><li>6 Deglet Noor chopped dates - 30g carbs</li><li>1 Egg</li><li>Sprinkle of cinnamon</li><li>Pinch of salt</li></ul>
-    <h4>Method</h4><ol><li>Preheat oven to 350°F.</li><li>Mash banana in a large bowl then whisk in the egg.</li><li>Add maple syrup, honey, cinnamon, and salt and mix until combined.</li><li>Fold in rolled oats until the mixture is fully combined and holds together when pressed.</li><li>Transfer to a parchment-lined baking dish and press firmly to about half an inch thickness.</li><li>Press chopped dates evenly into the top surface.</li><li>Bake for 20–22 minutes until the top is golden and the edges are slightly crisp.</li><li>Cool completely before cutting into 6 bars.</li><li>Wrap individually in parchment and refrigerate for up to 7 days or freeze for up to 1 month.</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/maple-cinnamon-oat-recovery-bars/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Solid" id="savory-potato-cakes">
-  <img loading="lazy" src="assets/savory-potato-cakes.webp" alt="Savory Potato Cakes">
-  <div class="body">
-    <div class="meta"><span class="badge">Solid</span><span class="yield">Makes 4 cakes</span></div>
-    <h3>Savory Potato Cakes</h3>
-    <h4>Ingredients</h4><ul><li>800g - White potato - 150g carbs</li><li>1 tbsp - Maple syrup - 13g carbs</li><li>1 tbsp - Lemon juice</li><li>Pinch of salt</li></ul>
-    <h4>Method</h4><ol><li>Boil or bake potatoes until completely soft</li><li>Drain and mash until completely smooth</li><li>While warm mix in maple syrup, lemon juice, and salt until fully combined</li><li>Transfer to a small parchment-lined baking sheet and press flat and even to about half an inch thickness</li><li>Refrigerate for at least 1 hour until firm</li><li>Cut into four squares and wrap each one tightly in parchment and tin foil</li><li>Refrigerate for up to 4 days or freeze them</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/white-potato-cakes/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Solid" id="sweet-potato-oat-bars">
-  <img loading="lazy" src="assets/sweet-potato-oat-bars.webp" alt="Sweet Potato Oat Bars">
-  <div class="body">
-    <div class="meta"><span class="badge">Solid</span><span class="yield">Makes 8 bars</span></div>
-    <h3>Sweet Potato Oat Bars</h3>
-    <h4>Ingredients</h4><ul><li>2 cups - Boiled sweet potato - 40g carbs</li><li>1 cup - Rolled oats - 54g carbs</li><li>1 banana - 27g carbs</li><li>3 tbsp - Maple syrup - 40g carbs</li><li>Splash of vanilla extract</li><li>Sprinkle of cinnamon</li></ul>
-    <h4>Method</h4><ol><li>Preheat oven to 350°F</li><li>Mash sweet potato and banana together in a large bowl until smooth</li><li>Add maple syrup, vanilla, and cinnamon and mix until combined</li><li>Fold in ground oats until the mixture holds together</li><li>Press firmly into a parchment-lined baking dish to about half an inch thickness</li><li>Bake for 20–22 minutes until golden on top</li><li>Cool completely before cutting into bars</li><li>Put bars in glass container and freeze them </li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/sweet-potato-and-oat-bars/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Solid" id="low-carb-nut-bars">
-  <img loading="lazy" src="assets/mama-bear.jpg" alt="Low Carb Nut Bars">
-  <div class="body">
-    <div class="meta"><span class="badge">Solid</span><span class="yield">Makes 18 bars · ~4 g net carbs each</span></div>
-    <h3>Low Carb Nut Bars</h3>
-    <h4>Ingredients</h4><ul><li>¼ cup unsalted butter</li><li>½ cup organic peanut butter (no additives)</li><li>⅓ cup honey substitute (sugar-free honey-flavoured syrup)</li><li>¾ tsp vanilla extract</li><li>1 tsp sea salt</li><li>1¼ cups roasted &amp; salted peanuts</li><li>¾ cup roasted &amp; salted cashews, roughly chopped</li><li>¾ cup roasted almonds</li></ul>
-    <h4>Method</h4><ol><li>Add the butter and peanut butter to a medium microwave-safe bowl. Melt in the microwave for 1 minute, or melt in a small saucepan until the butter has fully melted. Whisk in the honey substitute, vanilla and salt.</li><li>Stir in the almonds, peanuts and roughly chopped cashews until fully combined with the peanut butter mixture. Pour into a wax-paper-lined 8×8″ baking pan and press firmly with a spatula.</li><li>Freeze for 1 hour; halfway through the freezing time, press the nuts down a little firmer into the pan with a potato masher or flipper. Cut into 18. Store in the refrigerator.</li></ol>
-    <p class="note">Storage: airtight in the fridge — the author says they keep at least a month. Author's tips: roasted nuts taste far better than raw; swap the peanut butter for almond butter if you prefer.</p>
-    <p class="src">Recipe: Mama Bear's Cookbook (Michelle Beaupre &amp; Mitch Durfee) — <a href="https://mamabearscookbook.com/low-carb-nut-bar/">mamabearscookbook.com/low-carb-nut-bar/</a></p>
-  </div></article><article class="card" data-cat="Solid" id="no-bake-keto-granola-bars">
-  <img loading="lazy" src="assets/keto-granola.jpg" alt="No-Bake Keto Granola Bars">
-  <div class="body">
-    <div class="meta"><span class="badge">Solid</span><span class="yield">Makes 12 bars · 7 g protein each</span></div>
-    <h3>No-Bake Keto Granola Bars</h3>
-    <h4>Ingredients</h4><ul><li>2 cups raw almonds</li><li>1 cup unsweetened coconut flakes</li><li>7 Tbsp xylitol or allulose</li><li>7 Tbsp erythritol or allulose</li><li>¼ cup coconut cream</li><li>1 cup sugar-free chocolate chips</li></ul>
-    <h4>Method</h4><ol><li>Line a 9×9 square baking pan with parchment paper. Grease with coconut oil. Coarsely chop the almonds and coconut flakes by pulsing in a food processor.</li><li>Combine the sweeteners and coconut cream over medium-high heat. Simmer rapidly, stirring frequently, until the mixture thickens and turns golden.</li><li>Stir the almonds and coconut flakes into the syrup. Pour into the prepared pan. Press flat with a spatula or wooden spoon. Sprinkle the chocolate chips on the hot nut mixture — it should be hot enough that they melt a little and stick.</li><li>Cool to room temperature. Refrigerate for at least 30 minutes. Lift the parchment paper out of the pan. Cut the granola bars using a sharp knife.</li></ol>
-    <p class="note">Per bar: 255 cal · 10 g carbs · 5 g fibre (5 g net) · 7 g protein. Storage: room temperature up to 2 weeks; firmer in the fridge. Author's warning: if there are pets in the house, choose allulose — xylitol is toxic to dogs.</p>
-    <p class="src">Recipe: Joy Filled Eats (Taryn Scarfone) — <a href="https://joyfilledeats.com/homemade-granola-bars/">joyfilledeats.com/homemade-granola-bars/</a></p>
-  </div></article><article class="card" data-cat="Solid" id="5-ingredient-protein-bars">
-  <img loading="lazy" src="assets/pb-protein.jpg" alt="5-Ingredient Protein Bars (No-Bake)">
-  <div class="body">
-    <div class="meta"><span class="badge">Solid</span><span class="yield">Makes 12 bars · 14 g protein each</span></div>
-    <h3>5-Ingredient Protein Bars (No-Bake)</h3>
-    <h4>Ingredients</h4><ul><li>½ cup milk</li><li>1 cup peanut butter, chunky</li><li>½ cup maple syrup, or honey, plus extra to taste</li><li>1 cup whey protein powder, plain, unflavored recommended</li><li>2 cups whole rolled oats, uncooked</li><li>1 tsp cinnamon (optional)</li><li>Optional add-ins, 1 cup: chocolate chips, raisins, dried blueberries, chopped dates, chopped nuts, or melted chocolate for drizzling</li></ul>
-    <h4>Method</h4><ol><li>In a medium heavy pot, combine milk, peanut butter, and maple syrup/honey over low heat. Stir just until all ingredients are well combined and warmed through. Remove from heat.</li><li>Add protein powder, oats, and optional cinnamon or add-ins. Stir to combine well. Taste and add more maple syrup or honey if desired. If the mixture is too thick to stir, add 1 tsp milk at a time just until it's stir-able; the mixture should still be thick and not at all watery.</li><li>Lightly grease an 8×8 pan. Press evenly into the pan, using firm pressure to compress the mixture to your desired bar thickness. Tip: use wet or lightly greased hands to prevent sticking.</li><li>Allow bars to cool completely. Once cool, cut into squares. If desired, drizzle with melted chocolate and let cool completely. Cover and chill until ready to eat.</li></ol>
-    <p class="note">Per bar: 258 cal · 14 g protein · 24 g carbs. Storage: airtight at room temperature up to 3 days, in the fridge up to 1 week, or frozen up to 2 months.</p>
-    <p class="src">Recipe: Chew Out Loud (Amy) — <a href="https://www.chewoutloud.com/5-ingredient-protein-bars-bake/">chewoutloud.com/5-ingredient-protein-bars-bake/</a></p>
-  </div></article><article class="card" data-cat="Solid" id="protein-bars-low-carb">
-  <img loading="lazy" src="assets/wholesomeyum.jpg" alt="Protein Bars (Low Carb &amp; Sugar Free)">
-  <div class="body">
-    <div class="meta"><span class="badge">Solid</span><span class="yield">Makes 12 bars · 2.3 g net carbs each</span></div>
-    <h3>Protein Bars (Low Carb &amp; Sugar Free)</h3>
-    <h4>Ingredients</h4><ul><li>1¼ cups blanched hazelnuts (divided into 1 cup and ¼ cup)</li><li>1 cup blanched almond flour</li><li>2 Tbsp Dutch processed cocoa powder</li><li>¼ cup collagen protein powder</li><li>½ cup powdered monk fruit allulose blend</li><li>¼ tsp sea salt</li><li>2 Tbsp almond butter (the slightly runny kind)</li><li>1 oz cocoa butter, melted</li><li>Sugar-free dark chocolate chips, melted (optional, for drizzling)</li></ul>
-    <h4>Method</h4><ol><li>Line an 8×8 pan with parchment paper, allowing it to hang over at least 2 sides.</li><li>Place 1 cup hazelnuts into a food processor. Pulse until you get a fine meal-like consistency.</li><li>Add the almond flour, cocoa powder, protein powder, sweetener, and sea salt. Pulse a few times, just until mixed. Scrape the sides of the food processor and pulse again.</li><li>Add the almond butter and melted cocoa butter. Process continuously until a dough forms, pulls away from the center, feels firm to the touch, and leaves a fingerprint when pressed. It should be firm and shiny, not runny or crumbly.</li><li>Press the protein bar dough tightly and evenly into the lined pan. Chop the remaining ¼ cup hazelnuts and press into the top. If desired, drizzle with melted chocolate (optional).</li><li>Place the pan in the fridge and chill for at least 1–2 hours, or until very firm. Lift the bars out using the edges of the parchment paper, slide onto a cutting board, and cut into 12 bars.</li><li>Store bars in the fridge, between layers of parchment paper.</li></ol>
-    <p class="note">Per bar: 178 cal · 6.5 g protein · 5.1 g total carbs · 2.3 g net carbs. Storage: airtight in the fridge up to a week; freeze individually wrapped up to 3 months. Cut straight down or with a rocking motion — no see-sawing, or the bars crumble.</p>
-    <p class="src">Recipe: Wholesome Yum (Maya Krampf) — <a href="https://www.wholesomeyum.com/protein-bars/">wholesomeyum.com/protein-bars/</a></p>
-  </div></article><article class="card" data-cat="Solid" id="keto-granola-bars-with-coconut">
-  <img loading="lazy" src="assets/sweetashoney.jpg" alt="Keto Granola Bars with Coconut">
-  <div class="body">
-    <div class="meta"><span class="badge">Solid</span><span class="yield">Makes 8 bars · the coconut feature bar</span></div>
-    <h3>Keto Granola Bars with Coconut</h3>
-    <h4>Ingredients</h4><ul><li>½ cup natural peanut butter (or almond butter)</li><li>¼ cup coconut oil, plus 1 tsp for the drizzle</li><li>2 tsp vanilla extract</li><li>⅓ cup granulated sweetener, like erythritol</li><li>½ cup sliced almonds, plus 1 extra Tbsp to decorate on top</li><li>⅓ cup flaxseed meal</li><li>1 Tbsp chia seeds</li><li>⅓ cup pumpkin seeds</li><li>¼ cup unsweetened desiccated coconut</li><li>½ tsp ground cinnamon</li><li>3 Tbsp sugar-free chocolate chips (for the drizzle)</li></ul>
-    <h4>Method</h4><ol><li>Line a 9×5-inch loaf pan with parchment paper. Set aside.</li><li>In a medium mixing bowl or a saucepan, place the wet ingredients: peanut butter, coconut oil, and vanilla. Microwave by 30-second bursts, stirring and repeating until the coconut oil is fully melted and combines with the nut butter — not more than 1 minute 30 seconds. Or melt in a saucepan over medium heat, stirring often.</li><li>Stir in the sugar-free crystal sweetener and microwave an extra 30 seconds to incorporate well.</li><li>In a large mixing bowl, add the dry ingredients: sliced almonds, flaxseed meal, chia seeds, pumpkin seeds, shredded coconut, and cinnamon. Stir to combine.</li><li>Pour the nut butter mixture onto the dry ingredients and stir with a spatula until everything is evenly covered.</li><li>Transfer the mixture to the prepared loaf pan. Press evenly with your hand to leave no air, and flatten the surface with a spatula.</li><li>Freeze for 20 minutes, until the bars are hard and set. Lift out on the parchment and sprinkle the extra sliced almonds on top.</li><li>Melt the sugar-free dark chocolate and coconut oil in a small bowl in the microwave. Drizzle over the top and return to the freezer for 1–3 minutes, until the chocolate is set.</li><li>Cut into 8 bars. Wrap each bar individually in plastic wrap or bee wax.</li></ol>
-    <p class="note">Storage: wrap each bar individually and keep in the fridge for up to 8 days. The author's sweetener note: erythritol doesn't fully dissolve in no-bake goods — that little sweet crunch is expected.</p>
-    <p class="src">Recipe: Sweet As Honey (Carine) — <a href="https://www.sweetashoney.co/keto-granola-bars/">sweetashoney.co/keto-granola-bars/</a></p>
-  </div></article><article class="card" data-cat="Solid" id="keto-chocolate-protein-bars">
-  <img loading="lazy" src="assets/sugarfreemom.jpg" alt="Keto Chocolate Protein Bars (Nut Free)">
-  <div class="body">
-    <div class="meta"><span class="badge">Solid</span><span class="yield">Makes 16 bars · nut-free · 3 g net carbs each</span></div>
-    <h3>Keto Chocolate Protein Bars (Nut Free)</h3>
-    <h4>Ingredients</h4><ul><li>4 oz sunflower seeds, raw and unsalted</li><li>4 oz sunflower seed butter (or tahini, or any nut butter if no nut allergies)</li><li>2 scoops chocolate protein powder, or 75 g</li><li>3 oz unsweetened cocoa powder</li><li>¾ cup monk fruit allulose confectioners sweetener</li><li>¼ tsp salt</li><li>8 Tbsp butter, softened (or coconut oil)</li><li>Optional coating: ½ cup sugar-free dark chocolate chips and 1 Tbsp butter</li></ul>
-    <h4>Method</h4><ol><li>Place all ingredients into a food processor and blend until smooth.</li><li>Scrape down the sides of the processor and blend again, until it looks shiny and slightly wet.</li><li>Taste and adjust sweetener if needed.</li><li>Spread the batter into a parchment lined 8×4 inch loaf pan. Use the sides of the parchment over the top of the batter to press it down and flatten evenly without getting your hands dirty.</li><li>Refrigerate for 30 minutes. Slice into 8 bars, then cut the bars in half to make 16 bars.</li><li>If using the optional coating: freeze for 30 minutes first. Melt the chocolate chips and butter in the microwave for 1 minute or on the stove top and stir until smooth. Dip the bottom half of the bars into the melted chocolate, lay on a parchment lined baking sheet, and drizzle more chocolate on top if desired.</li></ol>
-    <p class="note">Per bar: 151 cal · 6 g protein · 5 g carbs · 3 g net carbs. Storage: no refrigeration needed; airtight on the counter up to 5 days, in the fridge up to 2 weeks, or frozen for a month. The author prefers a loaf pan over an 8×8 — the bars come out too thin in the square pan.</p>
-    <p class="src">Recipe: Sugar-Free Mom (Brenda Bennett) — <a href="https://www.sugarfreemom.com/recipes/low-carb-chocolate-fudge-protein-bars-nut-free/">sugarfreemom.com/recipes/low-carb-chocolate-fudge-protein-bars-nut-free/</a></p>
-  </div></article></div></section>
-  <section class="tab" id="Liquid"><div class="grid"><article class="card" data-cat="Liquid" id="apple-date-energy-gel">
-  <img loading="lazy" src="assets/apple-date-energy-gel.webp" alt="Apple Date Energy Gel">
-  <div class="body">
-    <div class="meta"><span class="badge">Gel</span><span class="yield">Makes 1 gel</span></div>
-    <h3>Apple Date Energy Gel</h3>
-    <h4>Ingredients</h4><ul><li>5 deglet noor dates - 25g carbs</li><li>2 oz - Apple juice</li><li>1/2 tbsp - Maple syrup - 7g carbs</li><li>Pinch of salt</li></ul>
-    <h4>Method</h4><ol><li>Blend dates with apple juice, maple syrup, and salt until completely smooth</li><li>Pour into a 3oz reusable soft flask</li><li>Refrigerate for up to 5 days or freeze</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/date-apple-and-electrolyte-gel/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Liquid" id="beet-and-honey-gel">
-  <img loading="lazy" src="assets/beet-and-honey-gel.webp" alt="Beet &amp; Honey Gel">
-  <div class="body">
-    <div class="meta"><span class="badge">Gel</span><span class="yield">Makes 2 gels</span></div>
-    <h3>Beet &amp; Honey Gel</h3>
-    <h4>Ingredients</h4><ul><li>4 oz - Pure beet juice - 12g carbs</li><li>2 tbsp - Raw honey - 34g carbs</li><li>2 tbsp - Maple syrup - 26g carbs</li><li>1-2 pinches of salt</li></ul>
-    <h4>Method</h4><ol><li>Whisk beet juice, honey, maple syrup, and salt together in a bowl until completely smooth.</li><li>Pour into two 3oz reusable soft flasks.</li><li>Refrigerate for up to 5 days. Shake well before use.</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/beet-and-honey-performance-gel/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Liquid" id="grape-molasses-energy-gel">
-  <img loading="lazy" src="assets/grape-molasses-energy-gel.webp" alt="Grape Molasses Energy Gel">
-  <div class="body">
-    <div class="meta"><span class="badge">Gel</span><span class="yield">Makes 1 gel</span></div>
-    <h3>Grape Molasses Energy Gel</h3>
-    <h4>Ingredients</h4><ul><li>2 oz - Grape juice - 14g carbs</li><li>1 tbsp - Maple syrup - 13g carbs</li><li>10g or 1/2 tbsp - Raw honey - 8g carbs</li><li>10g or 1/2 tbsp - Molasses - 8g carbs</li><li>Pinch of salt</li></ul>
-    <h4>Method</h4><ol><li>Combine grape juice, maple syrup, honey, molasses, and salt in a small measuring cup and whisk until fully combined</li><li>Pour into a 3oz reusable soft flask</li><li>Refrigerate for up to 5 days of freeze it</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/grape-and-molasses-performance-gel/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Liquid" id="mango-gel">
-  <img loading="lazy" src="assets/mango-gel.webp" alt="Mango Gel">
-  <div class="body">
-    <div class="meta"><span class="badge">Gel</span><span class="yield">Makes 2 gels</span></div>
-    <h3>Mango Gel</h3>
-    <h4>Ingredients</h4><ul><li>1 cup - Frozen mango - 20g carbs</li><li>2 1/2 tbsp - Maple syrup - 35g carbs</li><li>4 oz - Coconut water - 4g carbs</li><li>Pinch of salt</li></ul>
-    <h4>Method</h4><ol><li>Blend frozen mango, maple syrup, coconut water, and salt until completely smooth</li><li>Pour into two 3oz reusable soft flasks</li><li>Refrigerate for up to 4 days or freeze them</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/mango-coconut-gel/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Liquid" id="orange-maple-honey-gel">
-  <img loading="lazy" src="assets/orange-maple-honey-gel.webp" alt="Orange Maple Honey Gel">
-  <div class="body">
-    <div class="meta"><span class="badge">Gel</span><span class="yield">Makes 1 gel</span></div>
-    <h3>Orange Maple Honey Gel</h3>
-    <h4>Ingredients</h4><ul><li>2 oz - Orange juice - 7g carbs</li><li>1 tbsp - Raw honey - 17g carbs</li><li>1 1/2 tbsp - Maple syrup - 20g carbs</li></ul>
-    <h4>Method</h4><ol><li>Whisk honey, orange juice, and maple syrup together in a small measuring glass until mixture is smooth</li><li>Pour directly into a 3oz reusable soft flask</li><li>Refrigerate for up to 7 days</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/orange-and-honey-gel/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Liquid" id="pineapple-gel">
-  <img loading="lazy" src="assets/pineapple-gel.webp" alt="Pineapple Gel">
-  <div class="body">
-    <div class="meta"><span class="badge">Gel</span><span class="yield">Makes 3 gels</span></div>
-    <h3>Pineapple Gel</h3>
-    <h4>Ingredients</h4><ul><li>1.5 cups - Pineapple - 25g carbs</li><li>3 tbsp - Maple syrup - 40g carbs</li><li>1 1/2 tbsp - Raw honey - 25g carbs</li><li>Splash of coconut water or regular water</li></ul>
-    <h4>Method</h4><ol><li>Blend fresh pineapple until completely smooth</li><li>Add maple syrup, honey, and a splash of water and blend again until fully combined</li><li>Strain through a fine mesh sieve if you prefer a smoother texture</li><li>Pour into three 3oz reusable soft flasks</li><li>Refrigerate for up to 4 days or freeze them</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/pineapple-gel/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Liquid" id="watermelon-gel">
-  <img loading="lazy" src="assets/watermelon-gel.webp" alt="Watermelon Gel">
-  <div class="body">
-    <div class="meta"><span class="badge">Gel</span><span class="yield">Makes 2 gels</span></div>
-    <h3>Watermelon Gel</h3>
-    <h4>Ingredients</h4><ul><li>1 cup - Watermelon - 10g carbs</li><li>3 tbsp - Raw honey - 50g carbs</li><li>Pinch of salt</li></ul>
-    <h4>Method</h4><ol><li>Blend watermelon until smooth</li><li>Add honey and salt and blend again briefly until fully combined</li><li>Pour into two 3oz reusable soft flasks</li><li>Refrigerate for up to 4 days or freeze them</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/watermelon-and-honey-gel/">drewaddis.com</a></p>
-  </div></article><article class="card" data-cat="Liquid" id="natural-electrolyte-drink">
-  <img loading="lazy" src="assets/natural-electrolyte-drink.webp" alt="Natural Electrolyte Drink">
-  <div class="body">
-    <div class="meta"><span class="badge">Drink</span><span class="yield">Makes 12 oz drink</span></div>
-    <h3>Natural Electrolyte Drink</h3>
-    <h4>Ingredients</h4><ul><li>4 oz - Coconut water - 5g carbs</li><li>3 tsp - Maple sugar - 10g carbs</li><li>2 tbsp - Lemon juice</li><li>Pinch of salt</li></ul>
-    <h4>Method</h4><ol><li>Add coconut water, maple sugar, lemon juice, and salt directly a glass</li><li>Shake or stir until fully combined</li><li>Refrigerate before starting your workout</li></ol>
-    <p class="src">Recipe by Drew Addis — <a href="https://drewaddis.com/recipes/natural-electrolyte-drink/">drewaddis.com</a></p>
-  </div></article></div></section>
+  <section class="tab active" id="tab-solid">
+   <div class="list">
+    <a class="card" href="recipes/high-carb-energy-balls.html">
+      <img src="assets/high-carb-energy-balls.webp" alt="High Carb Energy Balls">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Solid · Drew Addis</div>
+        <h2>High Carb Energy Balls</h2>
+        <p class="preview">Makes 10 balls — 10 deglet noor dates, Rolled oats, Maple sugar, Vanilla extract.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="recipes/maple-cinnamon-oat-recovery-bars.html">
+      <img src="assets/maple-cinnamon-oat-recovery-bars.webp" alt="Maple Cinnamon Oat Recovery Bars">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Solid · Drew Addis</div>
+        <h2>Maple Cinnamon Oat Recovery Bars</h2>
+        <p class="preview">Makes 6 bars — Rolled oats, Banana, Maple syrup, Raw honey.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="recipes/savory-potato-cakes.html">
+      <img src="assets/savory-potato-cakes.webp" alt="Savory Potato Cakes">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Solid · Drew Addis</div>
+        <h2>Savory Potato Cakes</h2>
+        <p class="preview">Makes 4 cakes — White potato, Maple syrup, Lemon juice, Pinch of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="recipes/sweet-potato-oat-bars.html">
+      <img src="assets/sweet-potato-oat-bars.webp" alt="Sweet Potato Oat Bars">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Solid · Drew Addis</div>
+        <h2>Sweet Potato Oat Bars</h2>
+        <p class="preview">Makes 8 bars — Boiled sweet potato, Rolled oats, 1 banana, Maple syrup.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="../cookbox/recipes/low-carb-nut-bars.html">
+      <img src="assets/mama-bear.jpg" alt="Low Carb Nut Bars">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Solid</div>
+        <h2>Low Carb Nut Bars</h2>
+        <p class="preview">Peanuts, cashews and almonds in a warm peanut-butter mix, frozen and cut. About 4g net carbs a bar.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="../cookbox/recipes/no-bake-keto-granola-bars.html">
+      <img src="assets/keto-granola.jpg" alt="No-Bake Keto Granola Bars">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Solid</div>
+        <h2>No-Bake Keto Granola Bars</h2>
+        <p class="preview">Almonds and coconut flakes in golden syrup, sugar-free chocolate melted over the top. 3g net carbs a bar.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="../cookbox/recipes/5-ingredient-protein-bars.html">
+      <img src="assets/pb-protein.jpg" alt="5-Ingredient Protein Bars (No-Bake)">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Solid</div>
+        <h2>5-Ingredient Protein Bars (No-Bake)</h2>
+        <p class="preview">Five ingredients: peanut butter, maple syrup, whey protein, oats. 14g protein a bar.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="../cookbox/recipes/protein-bars-low-carb.html">
+      <img src="assets/wholesomeyum.jpg" alt="Protein Bars (Low Carb &amp; Sugar Free)">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Solid</div>
+        <h2>Protein Bars (Low Carb &amp; Sugar Free)</h2>
+        <p class="preview">Hazelnuts, almond flour, cocoa, collagen — pressed and chilled. Lowest carb in the box: 2.3g net a bar.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="../cookbox/recipes/keto-granola-bars-with-coconut.html">
+      <img src="assets/sweetashoney.jpg" alt="Keto Granola Bars with Coconut">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Solid</div>
+        <h2>Keto Granola Bars with Coconut</h2>
+        <p class="preview">The coconut bar he asked for: coconut inside, coconut oil binding, almonds and pumpkin seeds, chocolate drizzle.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="../cookbox/recipes/keto-chocolate-protein-bars.html">
+      <img src="assets/sugarfreemom.jpg" alt="Keto Chocolate Protein Bars (Nut Free)">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Solid</div>
+        <h2>Keto Chocolate Protein Bars (Nut Free)</h2>
+        <p class="preview">The nut-free bar: sunflower seeds and seed butter, chocolate protein powder, cocoa.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+   </div>
+  </section>
+  <section class="tab" id="tab-liquid">
+   <div class="list">
+    <a class="card" href="recipes/apple-date-energy-gel.html">
+      <img src="assets/apple-date-energy-gel.webp" alt="Apple Date Energy Gel">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
+        <h2>Apple Date Energy Gel</h2>
+        <p class="preview">Makes 1 gel — 5 deglet noor dates, Apple juice, Maple syrup, Pinch of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="recipes/beet-and-honey-gel.html">
+      <img src="assets/beet-and-honey-gel.webp" alt="Beet &amp; Honey Gel">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
+        <h2>Beet &amp; Honey Gel</h2>
+        <p class="preview">Makes 2 gels — Pure beet juice, Raw honey, Maple syrup, 1-2 pinches of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="recipes/grape-molasses-energy-gel.html">
+      <img src="assets/grape-molasses-energy-gel.webp" alt="Grape Molasses Energy Gel">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
+        <h2>Grape Molasses Energy Gel</h2>
+        <p class="preview">Makes 1 gel — Grape juice, Maple syrup, Raw honey, Molasses.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="recipes/mango-gel.html">
+      <img src="assets/mango-gel.webp" alt="Mango Gel">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
+        <h2>Mango Gel</h2>
+        <p class="preview">Makes 2 gels — Frozen mango, Maple syrup, Coconut water, Pinch of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="recipes/orange-maple-honey-gel.html">
+      <img src="assets/orange-maple-honey-gel.webp" alt="Orange Maple Honey Gel">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
+        <h2>Orange Maple Honey Gel</h2>
+        <p class="preview">Makes 1 gel — Orange juice, Raw honey, Maple syrup.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="recipes/pineapple-gel.html">
+      <img src="assets/pineapple-gel.webp" alt="Pineapple Gel">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
+        <h2>Pineapple Gel</h2>
+        <p class="preview">Makes 3 gels — Pineapple, Maple syrup, Raw honey, Splash of coconut water or regular water.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="recipes/watermelon-gel.html">
+      <img src="assets/watermelon-gel.webp" alt="Watermelon Gel">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
+        <h2>Watermelon Gel</h2>
+        <p class="preview">Makes 2 gels — Watermelon, Raw honey, Pinch of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="recipes/natural-electrolyte-drink.html">
+      <img src="assets/natural-electrolyte-drink.webp" alt="Natural Electrolyte Drink">
+      <div class="txt">
+        <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
+        <h2>Natural Electrolyte Drink</h2>
+        <p class="preview">Makes 12 oz drink — Coconut water, Maple sugar, Lemon juice, Pinch of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+   </div>
+  </section>
 </main>
-<footer>Recipes and photos © Drew Addis — drewaddis.com/recipes · Collected for a personal gift, not for sale.</footer>
+<footer>recipes.gregorioramirez.com</footer>
 <script>
- document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('click',()=>{
-   document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.remove('active'));
-   document.querySelectorAll('section.tab').forEach(x=>x.classList.remove('active'));
-   b.classList.add('active'); document.getElementById(b.dataset.tab).classList.add('active');
-   window.scrollTo({top:0,behavior:'smooth'});
- }));
+  document.querySelectorAll('nav.tabs button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('nav.tabs button').forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('section.tab').forEach(function (s) { s.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
 </script>
 </body></html>
