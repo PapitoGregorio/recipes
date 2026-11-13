@@ -14,6 +14,8 @@ header.site p{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto;li
 nav.tabs{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);display:flex;justify-content:center;gap:6px;padding:12px 10px;z-index:5;flex-wrap:wrap;margin-top:28px}
 nav.tabs button{font:inherit;font-size:15px;font-weight:600;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:9px 20px;cursor:pointer}
 nav.tabs button.active{background:var(--ink);border-color:var(--ink);color:#fff}
+nav.subtabs{position:static;border-bottom:none;margin:0 0 26px;padding:0}
+nav.subtabs button{font-size:14px;padding:7px 16px}
 main{max-width:1080px;margin:0 auto;padding:34px 24px 70px}
 section.tab{display:none} section.tab.active{display:block}
 .list{display:flex;flex-direction:column;gap:26px}
@@ -48,15 +50,22 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
 </header>
 <div class="searchbar"><input id="search" type="search" placeholder="Search all recipes…" aria-label="Search all recipes"></div>
 <div class="results" id="results"></div>
-<nav class="tabs">
+<nav class="tabs main">
   <button data-tab="cookbox" class="active">Papito's Food Romance</button>
   <button data-tab="winter">Winter Bars</button>
   <button data-tab="cycling">Cycling Food</button>
 </nav>
 <main>
   <section class="tab active" id="tab-cookbox">
+   <nav class="tabs subtabs">
+  <button data-filter="savory" class="active">Savory (7)</button>
+  <button data-filter="dinner" class="">Dinner (5)</button>
+  <button data-filter="breakfast" class="">Breakfast (2)</button>
+  <button data-filter="desserts" class="">Desserts (6)</button>
+  <button data-filter="all" class="">All (15)</button>
+   </nav>
    <div class="list">
-    <a class="card" href="cookbox/recipes/lemongrass-basil-chicken-stir-fry.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="savory dinner" href="cookbox/recipes/lemongrass-basil-chicken-stir-fry.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/stir-fry.jpg" alt="Lemongrass Basil Chicken Stir Fry">
       <div class="txt">
         <div class="meta">Savory · Dinner · His own wok dinner</div>
@@ -65,7 +74,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/cuban-black-beans.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="savory dinner" href="cookbox/recipes/cuban-black-beans.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/cuban-black-beans.jpg" alt="Cuban Black Beans">
       <div class="txt">
         <div class="meta">Savory · Dinner · Instant Pot</div>
@@ -74,7 +83,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/ritz-cracker-meatloaf.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="savory dinner" href="cookbox/recipes/ritz-cracker-meatloaf.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/meatloaf.jpg" alt="Ritz Cracker Meatloaf">
       <div class="txt">
         <div class="meta">Savory · Dinner · Serves 8</div>
@@ -83,7 +92,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/instant-pot-cornbread.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="savory" href="cookbox/recipes/instant-pot-cornbread.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/cornbread.jpg" alt="Cornbread">
       <div class="txt">
         <div class="meta">Savory · Instant Pot</div>
@@ -92,7 +101,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/pesto-fish.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="savory dinner" href="cookbox/recipes/pesto-fish.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/pesto-fish.jpg" alt="Pesto Fish">
       <div class="txt">
         <div class="meta">Savory · Dinner · Baked fish</div>
@@ -101,7 +110,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/instant-pot-jambalaya.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="savory dinner" href="cookbox/recipes/instant-pot-jambalaya.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/jambalaya.jpg" alt="Jambalaya">
       <div class="txt">
         <div class="meta">Savory · Dinner · Instant Pot</div>
@@ -110,7 +119,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/pancake-mix.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="breakfast" href="cookbox/recipes/pancake-mix.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/pancake-mix.jpg" alt="Pancake Mix">
       <div class="txt">
         <div class="meta">Breakfast · Dry mix</div>
@@ -119,7 +128,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/pancakes.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="breakfast" href="cookbox/recipes/pancakes.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/pancakes.jpg" alt="Pancakes">
       <div class="txt">
         <div class="meta">Breakfast · Breakfast</div>
@@ -128,7 +137,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/salsa-canned.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="savory" href="cookbox/recipes/salsa-canned.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/salsa.jpg" alt="Salsa (Canned)">
       <div class="txt">
         <div class="meta">Savory · From Shelly, 8/2010</div>
@@ -137,7 +146,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/low-carb-nut-bars.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="desserts" href="cookbox/recipes/low-carb-nut-bars.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/mama-bear.jpg" alt="Low Carb Nut Bars">
       <div class="txt">
         <div class="meta">Desserts · Winter Bars · No-bake</div>
@@ -146,7 +155,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/no-bake-keto-granola-bars.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="desserts" href="cookbox/recipes/no-bake-keto-granola-bars.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/keto-granola.jpg" alt="No-Bake Keto Granola Bars">
       <div class="txt">
         <div class="meta">Desserts · Winter Bars · No-bake</div>
@@ -155,7 +164,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/5-ingredient-protein-bars.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="desserts" href="cookbox/recipes/5-ingredient-protein-bars.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/pb-protein.jpg" alt="5-Ingredient Protein Bars (No-Bake)">
       <div class="txt">
         <div class="meta">Desserts · Winter Bars · No-bake</div>
@@ -164,7 +173,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/protein-bars-low-carb.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="desserts" href="cookbox/recipes/protein-bars-low-carb.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/wholesomeyum.jpg" alt="Protein Bars (Low Carb &amp;amp;amp; Sugar Free)">
       <div class="txt">
         <div class="meta">Desserts · Winter Bars · No-bake</div>
@@ -173,7 +182,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/keto-granola-bars-with-coconut.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="desserts" href="cookbox/recipes/keto-granola-bars-with-coconut.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/sweetashoney.jpg" alt="Keto Granola Bars with Coconut">
       <div class="txt">
         <div class="meta">Desserts · Winter Bars · No-bake</div>
@@ -182,7 +191,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/keto-chocolate-protein-bars.html" target="_blank" rel="noopener">
+    <a class="card" data-cats="desserts" href="cookbox/recipes/keto-chocolate-protein-bars.html" target="_blank" rel="noopener">
       <img src="cookbox/assets/sugarfreemom.jpg" alt="Keto Chocolate Protein Bars (Nut Free)">
       <div class="txt">
         <div class="meta">Desserts · Winter Bars · No-bake</div>
@@ -253,109 +262,10 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
   </section>
   <section class="tab" id="tab-cycling">
    <div class="list">
-    <a class="card" href="cycling-food/index.html#apple-date-energy-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/apple-date-energy-gel.webp" alt="Apple Date Energy Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Apple Date Energy Gel</h2>
-        <p class="preview">Makes 1 gel — 5 deglet noor dates, Apple juice, Maple syrup, Pinch of salt.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
-    <a class="card" href="cycling-food/index.html#beet-and-honey-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/beet-and-honey-gel.webp" alt="Beet &amp; Honey Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Beet &amp; Honey Gel</h2>
-        <p class="preview">Makes 2 gels — Pure beet juice, Raw honey, Maple syrup, 1-2 pinches of salt.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
-    <a class="card" href="cycling-food/index.html#grape-molasses-energy-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/grape-molasses-energy-gel.webp" alt="Grape Molasses Energy Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Grape Molasses Energy Gel</h2>
-        <p class="preview">Makes 1 gel — Grape juice, Maple syrup, Raw honey, Molasses.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
-    <a class="card" href="cycling-food/index.html#mango-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/mango-gel.webp" alt="Mango Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Mango Gel</h2>
-        <p class="preview">Makes 2 gels — Frozen mango, Maple syrup, Coconut water, Pinch of salt.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
-    <a class="card" href="cycling-food/index.html#molasses-apple-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/molasses-apple-gel.webp" alt="Molasses Apple Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Molasses Apple Gel</h2>
-        <p class="preview">Makes 1 gel — Molasses, Apple juice, Pinch of salt.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
-    <a class="card" href="cycling-food/index.html#orange-fruit-spread-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/orange-fruit-spread-gel.webp" alt="Orange Fruit Spread Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Orange Fruit Spread Gel</h2>
-        <p class="preview">Makes 1 gel — Orange juice, Raw honey, Mash fruit spread.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
-    <a class="card" href="cycling-food/index.html#orange-maple-honey-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/orange-maple-honey-gel.webp" alt="Orange Maple Honey Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Orange Maple Honey Gel</h2>
-        <p class="preview">Makes 1 gel — Orange juice, Raw honey, Maple syrup.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
-    <a class="card" href="cycling-food/index.html#peach-and-honey-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/peach-and-honey-gel.png" alt="Peach &amp; Honey Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Peach &amp; Honey Gel</h2>
-        <p class="preview">Makes 2 gels — Skinned peach, Raw honey, Pinch of salt, Splash of coconut water to thin.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
-    <a class="card" href="cycling-food/index.html#pineapple-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/pineapple-gel.webp" alt="Pineapple Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Pineapple Gel</h2>
-        <p class="preview">Makes 3 gels — Pineapple, Maple syrup, Raw honey, Splash of coconut water or regular water.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
-    <a class="card" href="cycling-food/index.html#watermelon-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/watermelon-gel.webp" alt="Watermelon Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Watermelon Gel</h2>
-        <p class="preview">Makes 2 gels — Watermelon, Raw honey, Pinch of salt.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
-    <a class="card" href="cycling-food/index.html#watermelon-lime-gel" target="_blank" rel="noopener">
-      <img src="cycling-food/assets/watermelon-lime-gel.webp" alt="Watermelon Lime Gel">
-      <div class="txt">
-        <div class="meta">Cycling Food · Gels · Drew Addis</div>
-        <h2>Watermelon Lime Gel</h2>
-        <p class="preview">Makes 4 gels — Watermelon, Raw honey, Maple syrup, Lime juice.</p>
-        <div class="more"><span>Read more →</span></div>
-      </div>
-    </a>
     <a class="card" href="cycling-food/index.html#date-rice-cakes" target="_blank" rel="noopener">
       <img src="cycling-food/assets/date-rice-cakes.webp" alt="Date Rice Cakes">
       <div class="txt">
-        <div class="meta">Cycling Food · Solids · Drew Addis</div>
+        <div class="meta">Cycling Food · Solid · Drew Addis</div>
         <h2>Date Rice Cakes</h2>
         <p class="preview">Makes 4 rice cakes — Organic short grain rice, 8 deglet noor dates, Raw honey, Coconut oil.</p>
         <div class="more"><span>Read more →</span></div>
@@ -364,7 +274,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <a class="card" href="cycling-food/index.html#high-carb-energy-balls" target="_blank" rel="noopener">
       <img src="cycling-food/assets/high-carb-energy-balls.webp" alt="High Carb Energy Balls">
       <div class="txt">
-        <div class="meta">Cycling Food · Solids · Drew Addis</div>
+        <div class="meta">Cycling Food · Solid · Drew Addis</div>
         <h2>High Carb Energy Balls</h2>
         <p class="preview">Makes 10 balls — 10 deglet noor dates, Rolled oats, Maple sugar, Vanilla extract.</p>
         <div class="more"><span>Read more →</span></div>
@@ -373,7 +283,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <a class="card" href="cycling-food/index.html#maple-cinnamon-oat-recovery-bars" target="_blank" rel="noopener">
       <img src="cycling-food/assets/maple-cinnamon-oat-recovery-bars.webp" alt="Maple Cinnamon Oat Recovery Bars">
       <div class="txt">
-        <div class="meta">Cycling Food · Solids · Drew Addis</div>
+        <div class="meta">Cycling Food · Solid · Drew Addis</div>
         <h2>Maple Cinnamon Oat Recovery Bars</h2>
         <p class="preview">Makes 6 bars — Rolled oats, Banana, Maple syrup, Raw honey.</p>
         <div class="more"><span>Read more →</span></div>
@@ -382,7 +292,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <a class="card" href="cycling-food/index.html#savory-potato-cakes" target="_blank" rel="noopener">
       <img src="cycling-food/assets/savory-potato-cakes.webp" alt="Savory Potato Cakes">
       <div class="txt">
-        <div class="meta">Cycling Food · Solids · Drew Addis</div>
+        <div class="meta">Cycling Food · Solid · Drew Addis</div>
         <h2>Savory Potato Cakes</h2>
         <p class="preview">Makes 4 cakes — White potato, Maple syrup, Lemon juice, Pinch of salt.</p>
         <div class="more"><span>Read more →</span></div>
@@ -391,7 +301,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <a class="card" href="cycling-food/index.html#sweet-potato-oat-bars" target="_blank" rel="noopener">
       <img src="cycling-food/assets/sweet-potato-oat-bars.webp" alt="Sweet Potato Oat Bars">
       <div class="txt">
-        <div class="meta">Cycling Food · Solids · Drew Addis</div>
+        <div class="meta">Cycling Food · Solid · Drew Addis</div>
         <h2>Sweet Potato Oat Bars</h2>
         <p class="preview">Makes 8 bars — Boiled sweet potato, Rolled oats, 1 banana, Maple syrup.</p>
         <div class="more"><span>Read more →</span></div>
@@ -400,7 +310,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <a class="card" href="cycling-food/index.html#sweet-potato-oat-cakes" target="_blank" rel="noopener">
       <img src="cycling-food/assets/sweet-potato-oat-cakes.webp" alt="Sweet Potato Oat Cakes">
       <div class="txt">
-        <div class="meta">Cycling Food · Solids · Drew Addis</div>
+        <div class="meta">Cycling Food · Solid · Drew Addis</div>
         <h2>Sweet Potato Oat Cakes</h2>
         <p class="preview">Makes 4 cakes — Cooked sweet potato, Old-fashioned oats, All-purpose flour, Maple syrup.</p>
         <div class="more"><span>Read more →</span></div>
@@ -409,7 +319,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <a class="card" href="cycling-food/index.html#sweet-potato-rice-cakes" target="_blank" rel="noopener">
       <img src="cycling-food/assets/sweet-potato-rice-cakes.png" alt="Sweet Potato Rice Cakes">
       <div class="txt">
-        <div class="meta">Cycling Food · Solids · Drew Addis</div>
+        <div class="meta">Cycling Food · Solid · Drew Addis</div>
         <h2>Sweet Potato Rice Cakes</h2>
         <p class="preview">Makes 2 cakes — Organic rice, Mashed sweet potato, Maple syrup.</p>
         <div class="more"><span>Read more →</span></div>
@@ -418,16 +328,115 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <a class="card" href="cycling-food/index.html#tour-de-france-rice-cakes" target="_blank" rel="noopener">
       <img src="cycling-food/assets/tour-de-france-rice-cakes.webp" alt="Tour de France Rice Cakes">
       <div class="txt">
-        <div class="meta">Cycling Food · Solids · Drew Addis</div>
+        <div class="meta">Cycling Food · Solid · Drew Addis</div>
         <h2>Tour de France Rice Cakes</h2>
         <p class="preview">Makes 4 cakes — Organic sushi rice, Raw honey, Maple syrup, Coconut oil.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#apple-date-energy-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/apple-date-energy-gel.webp" alt="Apple Date Energy Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Apple Date Energy Gel</h2>
+        <p class="preview">Makes 1 gel — 5 deglet noor dates, Apple juice, Maple syrup, Pinch of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#beet-and-honey-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/beet-and-honey-gel.webp" alt="Beet &amp; Honey Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Beet &amp; Honey Gel</h2>
+        <p class="preview">Makes 2 gels — Pure beet juice, Raw honey, Maple syrup, 1-2 pinches of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#grape-molasses-energy-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/grape-molasses-energy-gel.webp" alt="Grape Molasses Energy Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Grape Molasses Energy Gel</h2>
+        <p class="preview">Makes 1 gel — Grape juice, Maple syrup, Raw honey, Molasses.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#mango-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/mango-gel.webp" alt="Mango Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Mango Gel</h2>
+        <p class="preview">Makes 2 gels — Frozen mango, Maple syrup, Coconut water, Pinch of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#molasses-apple-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/molasses-apple-gel.webp" alt="Molasses Apple Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Molasses Apple Gel</h2>
+        <p class="preview">Makes 1 gel — Molasses, Apple juice, Pinch of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#orange-fruit-spread-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/orange-fruit-spread-gel.webp" alt="Orange Fruit Spread Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Orange Fruit Spread Gel</h2>
+        <p class="preview">Makes 1 gel — Orange juice, Raw honey, Mash fruit spread.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#orange-maple-honey-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/orange-maple-honey-gel.webp" alt="Orange Maple Honey Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Orange Maple Honey Gel</h2>
+        <p class="preview">Makes 1 gel — Orange juice, Raw honey, Maple syrup.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#peach-and-honey-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/peach-and-honey-gel.png" alt="Peach &amp; Honey Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Peach &amp; Honey Gel</h2>
+        <p class="preview">Makes 2 gels — Skinned peach, Raw honey, Pinch of salt, Splash of coconut water to thin.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#pineapple-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/pineapple-gel.webp" alt="Pineapple Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Pineapple Gel</h2>
+        <p class="preview">Makes 3 gels — Pineapple, Maple syrup, Raw honey, Splash of coconut water or regular water.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#watermelon-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/watermelon-gel.webp" alt="Watermelon Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Watermelon Gel</h2>
+        <p class="preview">Makes 2 gels — Watermelon, Raw honey, Pinch of salt.</p>
+        <div class="more"><span>Read more →</span></div>
+      </div>
+    </a>
+    <a class="card" href="cycling-food/index.html#watermelon-lime-gel" target="_blank" rel="noopener">
+      <img src="cycling-food/assets/watermelon-lime-gel.webp" alt="Watermelon Lime Gel">
+      <div class="txt">
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
+        <h2>Watermelon Lime Gel</h2>
+        <p class="preview">Makes 4 gels — Watermelon, Raw honey, Maple syrup, Lime juice.</p>
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
     <a class="card" href="cycling-food/index.html#natural-electrolyte-drink" target="_blank" rel="noopener">
       <img src="cycling-food/assets/natural-electrolyte-drink.webp" alt="Natural Electrolyte Drink">
       <div class="txt">
-        <div class="meta">Cycling Food · Drinks · Drew Addis</div>
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
         <h2>Natural Electrolyte Drink</h2>
         <p class="preview">Makes 12 oz drink — Coconut water, Maple sugar, Lemon juice, Pinch of salt.</p>
         <div class="more"><span>Read more →</span></div>
@@ -436,7 +445,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <a class="card" href="cycling-food/index.html#pre-workout-energy-drink" target="_blank" rel="noopener">
       <img src="cycling-food/assets/pre-workout-energy-drink.webp" alt="Pre-Workout Energy Drink">
       <div class="txt">
-        <div class="meta">Cycling Food · Drinks · Drew Addis</div>
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
         <h2>Pre-Workout Energy Drink</h2>
         <p class="preview">Makes 6-8 oz drink — Cooled coffee, 4 Deglet Noor dates, 1/2 banana, Pinch of salt.</p>
         <div class="more"><span>Read more →</span></div>
@@ -445,7 +454,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <a class="card" href="cycling-food/index.html#tart-cherry-recovery-drink" target="_blank" rel="noopener">
       <img src="cycling-food/assets/tart-cherry-recovery-drink.webp" alt="Tart Cherry Recovery Drink">
       <div class="txt">
-        <div class="meta">Cycling Food · Drinks · Drew Addis</div>
+        <div class="meta">Cycling Food · Liquid · Drew Addis</div>
         <h2>Tart Cherry Recovery Drink</h2>
         <p class="preview">Makes 12 oz drink — Tart cherry juice, Coconut water, Pinch of salt, Squeeze of lemon.</p>
         <div class="more"><span>Read more →</span></div>
@@ -456,7 +465,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
 </main>
 <footer>recipes.gregorioramirez.com</footer>
 <script>
-  const SEARCH_INDEX = /*SEARCH-INDEX-START*/[{"t": "Lemongrass Basil Chicken Stir Fry", "c": "Papito's Food Romance", "u": "cookbox/recipes/lemongrass-basil-chicken-stir-fry.html"}, {"t": "Cuban Black Beans", "c": "Papito's Food Romance", "u": "cookbox/recipes/cuban-black-beans.html"}, {"t": "Ritz Cracker Meatloaf", "c": "Papito's Food Romance", "u": "cookbox/recipes/ritz-cracker-meatloaf.html"}, {"t": "Cornbread", "c": "Papito's Food Romance", "u": "cookbox/recipes/instant-pot-cornbread.html"}, {"t": "Pesto Fish", "c": "Papito's Food Romance", "u": "cookbox/recipes/pesto-fish.html"}, {"t": "Jambalaya", "c": "Papito's Food Romance", "u": "cookbox/recipes/instant-pot-jambalaya.html"}, {"t": "Pancake Mix", "c": "Papito's Food Romance", "u": "cookbox/recipes/pancake-mix.html"}, {"t": "Pancakes", "c": "Papito's Food Romance", "u": "cookbox/recipes/pancakes.html"}, {"t": "Salsa (Canned)", "c": "Papito's Food Romance", "u": "cookbox/recipes/salsa-canned.html"}, {"t": "Low Carb Nut Bars", "c": "Papito's Food Romance", "u": "cookbox/recipes/low-carb-nut-bars.html"}, {"t": "No-Bake Keto Granola Bars", "c": "Papito's Food Romance", "u": "cookbox/recipes/no-bake-keto-granola-bars.html"}, {"t": "5-Ingredient Protein Bars (No-Bake)", "c": "Papito's Food Romance", "u": "cookbox/recipes/5-ingredient-protein-bars.html"}, {"t": "Protein Bars (Low Carb & Sugar Free)", "c": "Papito's Food Romance", "u": "cookbox/recipes/protein-bars-low-carb.html"}, {"t": "Keto Granola Bars with Coconut", "c": "Papito's Food Romance", "u": "cookbox/recipes/keto-granola-bars-with-coconut.html"}, {"t": "Keto Chocolate Protein Bars (Nut Free)", "c": "Papito's Food Romance", "u": "cookbox/recipes/keto-chocolate-protein-bars.html"}, {"t": "Apple Date Energy Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#apple-date-energy-gel"}, {"t": "Beet & Honey Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#beet-and-honey-gel"}, {"t": "Grape Molasses Energy Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#grape-molasses-energy-gel"}, {"t": "Mango Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#mango-gel"}, {"t": "Molasses Apple Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#molasses-apple-gel"}, {"t": "Orange Fruit Spread Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#orange-fruit-spread-gel"}, {"t": "Orange Maple Honey Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#orange-maple-honey-gel"}, {"t": "Peach & Honey Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#peach-and-honey-gel"}, {"t": "Pineapple Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#pineapple-gel"}, {"t": "Watermelon Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#watermelon-gel"}, {"t": "Watermelon Lime Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#watermelon-lime-gel"}, {"t": "Date Rice Cakes", "c": "Cycling Food · Solids", "u": "cycling-food/#date-rice-cakes"}, {"t": "High Carb Energy Balls", "c": "Cycling Food · Solids", "u": "cycling-food/#high-carb-energy-balls"}, {"t": "Maple Cinnamon Oat Recovery Bars", "c": "Cycling Food · Solids", "u": "cycling-food/#maple-cinnamon-oat-recovery-bars"}, {"t": "Savory Potato Cakes", "c": "Cycling Food · Solids", "u": "cycling-food/#savory-potato-cakes"}, {"t": "Sweet Potato Oat Bars", "c": "Cycling Food · Solids", "u": "cycling-food/#sweet-potato-oat-bars"}, {"t": "Sweet Potato Oat Cakes", "c": "Cycling Food · Solids", "u": "cycling-food/#sweet-potato-oat-cakes"}, {"t": "Sweet Potato Rice Cakes", "c": "Cycling Food · Solids", "u": "cycling-food/#sweet-potato-rice-cakes"}, {"t": "Tour de France Rice Cakes", "c": "Cycling Food · Solids", "u": "cycling-food/#tour-de-france-rice-cakes"}, {"t": "Natural Electrolyte Drink", "c": "Cycling Food · Drinks", "u": "cycling-food/#natural-electrolyte-drink"}, {"t": "Pre-Workout Energy Drink", "c": "Cycling Food · Drinks", "u": "cycling-food/#pre-workout-energy-drink"}, {"t": "Tart Cherry Recovery Drink", "c": "Cycling Food · Drinks", "u": "cycling-food/#tart-cherry-recovery-drink"}]/*SEARCH-INDEX-END*/;
+  const SEARCH_INDEX = /*SEARCH-INDEX-START*/[{"t": "Lemongrass Basil Chicken Stir Fry", "c": "Papito's Food Romance", "u": "cookbox/recipes/lemongrass-basil-chicken-stir-fry.html"}, {"t": "Cuban Black Beans", "c": "Papito's Food Romance", "u": "cookbox/recipes/cuban-black-beans.html"}, {"t": "Ritz Cracker Meatloaf", "c": "Papito's Food Romance", "u": "cookbox/recipes/ritz-cracker-meatloaf.html"}, {"t": "Cornbread", "c": "Papito's Food Romance", "u": "cookbox/recipes/instant-pot-cornbread.html"}, {"t": "Pesto Fish", "c": "Papito's Food Romance", "u": "cookbox/recipes/pesto-fish.html"}, {"t": "Jambalaya", "c": "Papito's Food Romance", "u": "cookbox/recipes/instant-pot-jambalaya.html"}, {"t": "Pancake Mix", "c": "Papito's Food Romance", "u": "cookbox/recipes/pancake-mix.html"}, {"t": "Pancakes", "c": "Papito's Food Romance", "u": "cookbox/recipes/pancakes.html"}, {"t": "Salsa (Canned)", "c": "Papito's Food Romance", "u": "cookbox/recipes/salsa-canned.html"}, {"t": "Low Carb Nut Bars", "c": "Papito's Food Romance", "u": "cookbox/recipes/low-carb-nut-bars.html"}, {"t": "No-Bake Keto Granola Bars", "c": "Papito's Food Romance", "u": "cookbox/recipes/no-bake-keto-granola-bars.html"}, {"t": "5-Ingredient Protein Bars (No-Bake)", "c": "Papito's Food Romance", "u": "cookbox/recipes/5-ingredient-protein-bars.html"}, {"t": "Protein Bars (Low Carb & Sugar Free)", "c": "Papito's Food Romance", "u": "cookbox/recipes/protein-bars-low-carb.html"}, {"t": "Keto Granola Bars with Coconut", "c": "Papito's Food Romance", "u": "cookbox/recipes/keto-granola-bars-with-coconut.html"}, {"t": "Keto Chocolate Protein Bars (Nut Free)", "c": "Papito's Food Romance", "u": "cookbox/recipes/keto-chocolate-protein-bars.html"}, {"t": "Date Rice Cakes", "c": "Cycling Food · Solid", "u": "cycling-food/#date-rice-cakes"}, {"t": "High Carb Energy Balls", "c": "Cycling Food · Solid", "u": "cycling-food/#high-carb-energy-balls"}, {"t": "Maple Cinnamon Oat Recovery Bars", "c": "Cycling Food · Solid", "u": "cycling-food/#maple-cinnamon-oat-recovery-bars"}, {"t": "Savory Potato Cakes", "c": "Cycling Food · Solid", "u": "cycling-food/#savory-potato-cakes"}, {"t": "Sweet Potato Oat Bars", "c": "Cycling Food · Solid", "u": "cycling-food/#sweet-potato-oat-bars"}, {"t": "Sweet Potato Oat Cakes", "c": "Cycling Food · Solid", "u": "cycling-food/#sweet-potato-oat-cakes"}, {"t": "Sweet Potato Rice Cakes", "c": "Cycling Food · Solid", "u": "cycling-food/#sweet-potato-rice-cakes"}, {"t": "Tour de France Rice Cakes", "c": "Cycling Food · Solid", "u": "cycling-food/#tour-de-france-rice-cakes"}, {"t": "Apple Date Energy Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#apple-date-energy-gel"}, {"t": "Beet & Honey Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#beet-and-honey-gel"}, {"t": "Grape Molasses Energy Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#grape-molasses-energy-gel"}, {"t": "Mango Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#mango-gel"}, {"t": "Molasses Apple Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#molasses-apple-gel"}, {"t": "Orange Fruit Spread Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#orange-fruit-spread-gel"}, {"t": "Orange Maple Honey Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#orange-maple-honey-gel"}, {"t": "Peach & Honey Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#peach-and-honey-gel"}, {"t": "Pineapple Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#pineapple-gel"}, {"t": "Watermelon Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#watermelon-gel"}, {"t": "Watermelon Lime Gel", "c": "Cycling Food · Liquid", "u": "cycling-food/#watermelon-lime-gel"}, {"t": "Natural Electrolyte Drink", "c": "Cycling Food · Liquid", "u": "cycling-food/#natural-electrolyte-drink"}, {"t": "Pre-Workout Energy Drink", "c": "Cycling Food · Liquid", "u": "cycling-food/#pre-workout-energy-drink"}, {"t": "Tart Cherry Recovery Drink", "c": "Cycling Food · Liquid", "u": "cycling-food/#tart-cherry-recovery-drink"}]/*SEARCH-INDEX-END*/;
   const searchInput = document.getElementById('search');
   const resultsBox = document.getElementById('results');
   searchInput.addEventListener('input', function () {
@@ -470,14 +479,30 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
   });
 </script>
 <script>
-  document.querySelectorAll('nav.tabs button').forEach(function (btn) {
+  document.querySelectorAll('nav.main button').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      document.querySelectorAll('nav.tabs button').forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('nav.main button').forEach(function (b) { b.classList.remove('active'); });
       document.querySelectorAll('section.tab').forEach(function (s) { s.classList.remove('active'); });
       btn.classList.add('active');
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
     });
   });
+</script>
+<script>
+  const subBtns = document.querySelectorAll('nav.subtabs button');
+  const papitoCards = document.querySelectorAll('#tab-cookbox .card');
+  subBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      subBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      papitoCards.forEach(function (c) {
+        const show = f === 'all' || (c.dataset.cats || '').split(' ').includes(f);
+        c.style.display = show ? '' : 'none';
+      });
+    });
+  });
+  document.querySelector('nav.subtabs button.active').click();
 </script>
 </body>
 </html>
