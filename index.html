@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Recipes — Gregorio Ramirez</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #14161a; color: #e8e6e1; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 56px 20px 40px;
+  }
+  h1 { font-size: 2rem; font-weight: 700; letter-spacing: .01em; }
+  .sub { color: #9a97a3; margin-top: 8px; font-size: .95rem; }
+  .grid {
+    display: grid; gap: 20px; margin-top: 40px; width: 100%; max-width: 760px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  a.card {
+    display: block; text-decoration: none; color: inherit;
+    background: #1d2026; border: 1px solid #2c3038; border-radius: 14px;
+    padding: 26px 24px; transition: border-color .15s ease, transform .15s ease;
+  }
+  a.card:hover { border-color: #c8873a; transform: translateY(-2px); }
+  .card .tag { font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; color: #c8873a; }
+  .card h2 { font-size: 1.3rem; margin-top: 10px; font-weight: 650; }
+  .card p { color: #b6b3ad; font-size: .92rem; line-height: 1.5; margin-top: 8px; }
+  .card .open { display: inline-block; margin-top: 16px; font-size: .88rem; color: #e8e6e1; border-bottom: 1px solid #c8873a; padding-bottom: 2px; }
+  footer { margin-top: 48px; color: #5d5b64; font-size: .8rem; }
+</style>
+</head>
+<body>
+  <h1>Recipes</h1>
+  <p class="sub">Gregorio's kitchen books — private collection.</p>
+
+  <div class="grid">
+    <a class="card" href="cookbox/">
+      <span class="tag">Home Recipes</span>
+      <h2>Papito's Food Romance</h2>
+      <p>Home recipes of things I love — savory, dinner, breakfast, desserts. Katie Cooper-style: picture left, text right, read more opens the full recipe.</p>
+      <span class="open">Open Papito's Food Romance →</span>
+    </a>
+    <a class="card" href="winter-bars/">
+      <span class="tag">Book 2</span>
+      <h2>Winter Bars</h2>
+      <p>Low-carb, high-protein bars — no-bake favorites and coconut additions, each with its source on the card.</p>
+      <span class="open">Open the book →</span>
+    </a>
+    <a class="card" href="cycling-food/">
+      <span class="tag">Ride Fuel</span>
+      <h2>Cycling Food</h2>
+      <p>All 22 Drew Addis ride recipes as web pages — the gels, plus the on-bike food: rice cakes, bars, bites, and ride drinks.</p>
+      <span class="open">Open Cycling Food →</span>
+    </a>
+    <a class="card" href="books/endurance-fuel-recipe-book.pdf">
+      <span class="tag">Book 1</span>
+      <h2>Endurance Fuel</h2>
+      <p>The Drew Addis ride-fuel recipes, organized as a gift book — gels, bars, and long-ride food.</p>
+      <span class="open">Open the PDF →</span>
+    </a>
+  </div>
+
+  <footer>recipes.gregorioramirez.com</footer>
+</body>
+</html>

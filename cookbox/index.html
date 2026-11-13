@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Papito's Food Romance — Gregorio Ramirez</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1f1d1c;--muted:#736f6d;--line:#e7e2dc;--accent:#b4552d;--bg:#fffdfa}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:inherit}
+header.site{max-width:1080px;margin:0 auto;padding:56px 24px 8px;text-align:center}
+header.site .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:12px;color:var(--accent);font-weight:700}
+header.site h1{font-size:clamp(40px,6vw,64px);font-weight:800;letter-spacing:-.02em;margin:12px 0 10px}
+header.site p{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto;line-height:1.55}
+nav.tabs{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);display:flex;justify-content:center;gap:6px;padding:12px 10px;z-index:5;flex-wrap:wrap;margin-top:28px}
+nav.tabs button{font:inherit;font-size:15px;font-weight:600;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:9px 20px;cursor:pointer}
+nav.tabs button.active{background:var(--ink);border-color:var(--ink);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:34px 24px 70px}
+.list{display:flex;flex-direction:column;gap:26px}
+.card{display:flex;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;height:224px;text-decoration:none;transition:border-color .15s ease,transform .15s ease}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card img{width:308px;min-width:308px;height:100%;object-fit:cover}
+.card .txt{flex:1;padding:22px 26px;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.card .meta{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.card h2{font-size:25px;line-height:1.2;margin:8px 0 8px;letter-spacing:-.01em}
+.card .preview{color:var(--muted);font-size:15.5px;line-height:1.55;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.card .more{margin-top:auto;padding-top:10px;font-weight:700;font-size:15px;color:var(--ink)}
+.card .more span{border-bottom:2px solid var(--accent);padding-bottom:2px}
+.empty{display:none;text-align:center;color:var(--muted);padding:56px 20px;font-size:17px;border:1px dashed var(--line);border-radius:16px}
+footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+/* recipe page */
+.hero{width:100%;max-height:460px;object-fit:cover;display:block}
+article.recipe{max-width:700px;margin:0 auto;padding:42px 24px 70px;text-align:center}
+article.recipe .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:12px;color:var(--accent);font-weight:700}
+article.recipe h1{font-size:clamp(32px,5vw,48px);letter-spacing:-.02em;line-height:1.12;margin:12px 0 10px}
+article.recipe .meta{color:var(--muted);font-size:15px}
+article.recipe .intro{color:var(--muted);font-size:17px;line-height:1.6;margin:18px auto 6px;max-width:600px}
+article.recipe h2{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:38px 0 14px}
+article.recipe ul,article.recipe ol{text-align:left;max-width:560px;margin:0 auto;line-height:1.65;font-size:16.5px;padding-left:22px}
+article.recipe li{margin-bottom:7px}
+article.recipe .note{color:var(--muted);font-style:italic;font-size:14.5px;line-height:1.6;max-width:560px;margin:26px auto 0}
+article.recipe .src{color:var(--muted);font-size:13px;margin-top:22px}
+article.recipe .src a{color:var(--accent)}
+.back{display:inline-block;margin-top:40px;font-weight:700;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px}
+@media (max-width:680px){
+ .card{flex-direction:column;height:auto}
+ .card img{width:100%;min-width:0;height:190px}
+ .card .preview{-webkit-line-clamp:3}
+}
+</style></head><body>
+<header class="site">
+  <div class="kicker">Gregorio's Kitchen</div>
+  <h1>Papito's Food Romance</h1>
+  <p>Home recipes of things I love — my own kitchen, collected. Pick a tab, tap a recipe, and it opens full-page in a new window.</p>
+</header>
+<nav class="tabs">
+  <button data-filter="all" class="active">All (15)</button>
+  <button data-filter="savory" class="">Savory (7)</button>
+  <button data-filter="dinner" class="">Dinner (5)</button>
+  <button data-filter="breakfast" class="">Breakfast (2)</button>
+  <button data-filter="desserts" class="">Desserts (6)</button>
+</nav>
+<main>
+ <div class="list">
+  <a class="card" data-cats="savory dinner" href="recipes/lemongrass-basil-chicken-stir-fry.html" target="_blank" rel="noopener">
+    <img src="assets/stir-fry.jpg" alt="Lemongrass Basil Chicken Stir Fry">
+    <div class="txt">
+      <div class="meta">Savory · Dinner · His own wok dinner</div>
+      <h2>Lemongrass Basil Chicken Stir Fry</h2>
+      <p class="preview">Chicken, carrots, broccoli, bok choy and peppers in Kevin's Lemongrass Basil sauce. His own recipe — the wok photo is his.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="savory dinner" href="recipes/cuban-black-beans.html" target="_blank" rel="noopener">
+    <img src="assets/cuban-black-beans.jpg" alt="Cuban Black Beans">
+    <div class="txt">
+      <div class="meta">Savory · Dinner · Instant Pot</div>
+      <h2>Cuban Black Beans</h2>
+      <p class="preview">Instant Pot black beans: soak overnight, 5–8 minutes at pressure, finish with salt and vinegar or lime.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="savory dinner" href="recipes/ritz-cracker-meatloaf.html" target="_blank" rel="noopener">
+    <img src="assets/meatloaf.jpg" alt="Ritz Cracker Meatloaf">
+    <div class="txt">
+      <div class="meta">Savory · Dinner · Serves 8</div>
+      <h2>Ritz Cracker Meatloaf</h2>
+      <p class="preview">Beef and Ritz crackers soaked in milk, sautéed peppers and onion, ketchup–sweet chili glaze on twice. Done at 165°F.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="savory" href="recipes/instant-pot-cornbread.html" target="_blank" rel="noopener">
+    <img src="assets/cornbread.jpg" alt="Cornbread">
+    <div class="txt">
+      <div class="meta">Savory · Instant Pot</div>
+      <h2>Cornbread</h2>
+      <p class="preview">Jiffy mix, milk, egg whites, Stevia — pressure cooked in a springform pan. 15 minutes, 10 minutes natural release.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="savory dinner" href="recipes/pesto-fish.html" target="_blank" rel="noopener">
+    <img src="assets/pesto-fish.jpg" alt="Pesto Fish">
+    <div class="txt">
+      <div class="meta">Savory · Dinner · Baked fish</div>
+      <h2>Pesto Fish</h2>
+      <p class="preview">Filed as Pesto Fish (rename later). The card itself: baked fish in garlic butter with lemon.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="savory dinner" href="recipes/instant-pot-jambalaya.html" target="_blank" rel="noopener">
+    <img src="assets/jambalaya.jpg" alt="Jambalaya">
+    <div class="txt">
+      <div class="meta">Savory · Dinner · Instant Pot</div>
+      <h2>Jambalaya</h2>
+      <p class="preview">Zatarain's box, chicken and andouille, browned first, 8 minutes at pressure. His words: super simple.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="breakfast" href="recipes/pancake-mix.html" target="_blank" rel="noopener">
+    <img src="assets/pancake-mix.jpg" alt="Pancake Mix">
+    <div class="txt">
+      <div class="meta">Breakfast · Dry mix</div>
+      <h2>Pancake Mix</h2>
+      <p class="preview">Flour, sugar, baking powder, salt — his dry mix, ready when pancakes are on.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="breakfast" href="recipes/pancakes.html" target="_blank" rel="noopener">
+    <img src="assets/pancakes.jpg" alt="Pancakes">
+    <div class="txt">
+      <div class="meta">Breakfast · Breakfast</div>
+      <h2>Pancakes</h2>
+      <p class="preview">His from-scratch batter: flour, milk, egg, melted butter. Partner to the dry Pancake Mix.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="savory" href="recipes/salsa-canned.html" target="_blank" rel="noopener">
+    <img src="assets/salsa.jpg" alt="Salsa (Canned)">
+    <div class="txt">
+      <div class="meta">Savory · From Shelly, 8/2010</div>
+      <h2>Salsa (Canned)</h2>
+      <p class="preview">Shelly's canned salsa (2010): tomatoes, peppers, onion, jalapeños — simmer two hours, jar.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="desserts" href="recipes/low-carb-nut-bars.html" target="_blank" rel="noopener">
+    <img src="assets/mama-bear.jpg" alt="Low Carb Nut Bars">
+    <div class="txt">
+      <div class="meta">Desserts · Winter Bars · No-bake</div>
+      <h2>Low Carb Nut Bars</h2>
+      <p class="preview">Peanuts, cashews and almonds in a warm peanut-butter mix, frozen and cut. About 4g net carbs a bar.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="desserts" href="recipes/no-bake-keto-granola-bars.html" target="_blank" rel="noopener">
+    <img src="assets/keto-granola.jpg" alt="No-Bake Keto Granola Bars">
+    <div class="txt">
+      <div class="meta">Desserts · Winter Bars · No-bake</div>
+      <h2>No-Bake Keto Granola Bars</h2>
+      <p class="preview">Almonds and coconut flakes in golden syrup, sugar-free chocolate melted over the top. 3g net carbs a bar.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="desserts" href="recipes/5-ingredient-protein-bars.html" target="_blank" rel="noopener">
+    <img src="assets/pb-protein.jpg" alt="5-Ingredient Protein Bars (No-Bake)">
+    <div class="txt">
+      <div class="meta">Desserts · Winter Bars · No-bake</div>
+      <h2>5-Ingredient Protein Bars (No-Bake)</h2>
+      <p class="preview">Five ingredients: peanut butter, maple syrup, whey protein, oats. 14g protein a bar.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="desserts" href="recipes/protein-bars-low-carb.html" target="_blank" rel="noopener">
+    <img src="assets/wholesomeyum.jpg" alt="Protein Bars (Low Carb &amp;amp; Sugar Free)">
+    <div class="txt">
+      <div class="meta">Desserts · Winter Bars · No-bake</div>
+      <h2>Protein Bars (Low Carb &amp; Sugar Free)</h2>
+      <p class="preview">Hazelnuts, almond flour, cocoa, collagen — pressed and chilled. Lowest carb in the box: 2.3g net a bar.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="desserts" href="recipes/keto-granola-bars-with-coconut.html" target="_blank" rel="noopener">
+    <img src="assets/sweetashoney.jpg" alt="Keto Granola Bars with Coconut">
+    <div class="txt">
+      <div class="meta">Desserts · Winter Bars · No-bake</div>
+      <h2>Keto Granola Bars with Coconut</h2>
+      <p class="preview">The coconut bar he asked for: coconut inside, coconut oil binding, almonds and pumpkin seeds, chocolate drizzle.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+  <a class="card" data-cats="desserts" href="recipes/keto-chocolate-protein-bars.html" target="_blank" rel="noopener">
+    <img src="assets/sugarfreemom.jpg" alt="Keto Chocolate Protein Bars (Nut Free)">
+    <div class="txt">
+      <div class="meta">Desserts · Winter Bars · No-bake</div>
+      <h2>Keto Chocolate Protein Bars (Nut Free)</h2>
+      <p class="preview">The nut-free bar: sunflower seeds and seed butter, chocolate protein powder, cocoa.</p>
+      <div class="more"><span>Read more →</span></div>
+    </div>
+  </a>
+ </div>
+ <div class="empty" id="empty">Nothing in this tab yet — send me a favorite and I'll add it here.</div>
+</main>
+<footer>Papito's Food Romance · recipes.gregorioramirez.com · Private collection</footer>
+<script>
+const buttons = document.querySelectorAll('nav.tabs button');
+const cards = document.querySelectorAll('.card');
+const empty = document.getElementById('empty');
+buttons.forEach(b => b.addEventListener('click', () => {
+  buttons.forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  const f = b.dataset.filter;
+  let shown = 0;
+  cards.forEach(c => {
+    const show = f === 'all' || c.dataset.cats.split(' ').includes(f);
+    c.style.display = show ? '' : 'none';
+    if (show) shown++;
+  });
+  empty.style.display = shown ? 'none' : 'block';
+}));
+</script>
+</body></html>
