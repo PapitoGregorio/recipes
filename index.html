@@ -4,19 +4,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recipes — Papito's Kitchen</title><style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--ink:#1f1d1c;--muted:#736f6d;--line:#e7e2dc;--accent:#5b7247;--bg:#ffffff}
+:root{--ink:#1f1d1c;--muted:#736f6d;--line:#e7e2dc;--accent:#40ba37;--bg:#ffffff}
 .gnav{max-width:1080px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:60}
-.gnav .glogo{text-decoration:none;line-height:0}
-.glogo svg{height:54px;width:auto;display:block}
+.gnav .glogo{font-size:26px;font-weight:800;letter-spacing:-.02em;text-decoration:none}
+.glogo span{color:#40ba37}
 .gnav 
 .gnav nav{margin-left:auto;display:flex;gap:26px;flex-wrap:wrap}
 .gnav nav a{font-weight:600;font-size:15px;text-decoration:none}
-.gnav nav a:hover{color:#5b7247}
+.gnav nav a:hover{color:#40ba37}
 .gnav nav a.active{color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
 .gsearch{flex:0 1 300px}
 .gsearch input{width:100%;font:inherit;font-size:15.5px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);outline:none}
 .gsearch input:focus{border-color:var(--accent)}
-.hero{background:#fdfde9}
+.hero{background:#f3f5f1}
 .hero-in{max-width:1080px;margin:0 auto;padding:56px 24px;display:flex;align-items:center;gap:48px;flex-wrap:wrap}
 .hero-txt{flex:1;min-width:280px}
 .hero-txt .tag{color:var(--accent);font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:13px}
@@ -64,7 +64,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
 }
 </style></head><body>
 <header class="gnav">
-  <a class="glogo" href="index.html"><svg viewBox="0 0 330 106" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Papito's Kitchen logo"><g fill="#f6c945"><g transform="translate(140 30)"><rect x="-7" y="-27" width="14" height="27" rx="7" transform="rotate(-52)"/><rect x="-7" y="-29" width="14" height="29" rx="7" transform="rotate(-26)"/><rect x="-7" y="-30" width="14" height="30" rx="7"/><rect x="-7" y="-29" width="14" height="29" rx="7" transform="rotate(26)"/><rect x="-7" y="-27" width="14" height="27" rx="7" transform="rotate(52)"/></g><rect x="96" y="24" width="88" height="13" rx="6.5"/></g><text x="165" y="66" text-anchor="middle" font-family="'Arial Rounded MT Bold','Helvetica Rounded',system-ui,-apple-system,'Segoe UI',sans-serif" font-size="30" font-weight="800" fill="#5b7247">papito's kitchen</text><path d="M200 77 A36 36 0 0 0 268 77" fill="none" stroke="#f6c945" stroke-width="8" stroke-linecap="round"/></svg></a>
+  <a class="glogo" href="index.html">Papito's<span>Kitchen</span></a>
   <nav>
     <a href="#all" data-filter="all" class="active">All Recipes</a>
     <a href="#savory" data-filter="savory">Savory</a>
