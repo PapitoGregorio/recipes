@@ -11,6 +11,10 @@
 .gnav nav{margin-left:auto;display:flex;gap:26px;flex-wrap:wrap}
 .gnav nav a{font-weight:600;font-size:15px;text-decoration:none}
 .gnav nav a:hover{color:#40ba37}
+.gnav nav a.active{color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
+.gsearch{flex:0 1 300px}
+.gsearch input{width:100%;font:inherit;font-size:15.5px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);outline:none}
+.gsearch input:focus{border-color:var(--accent)}
 .hero{background:#f3f5f1}
 .hero-in{max-width:1080px;margin:0 auto;padding:56px 24px;display:flex;align-items:center;gap:48px;flex-wrap:wrap}
 .hero-txt{flex:1;min-width:280px}
@@ -60,16 +64,19 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
 </style></head><body>
 <header class="gnav">
   <a class="glogo" href="index.html">Papito's<span>Kitchen</span></a>
+  <div class="gsearch"><input id="search" type="search" placeholder="Search all recipes…" aria-label="Search all recipes"></div>
   <nav>
-    <a href="#savory" data-goto="savory">Savory</a>
-    <a href="#breakfast" data-goto="breakfast">Breakfast</a>
-    <a href="cycling-food/index.html">Cycling Recipes</a>
+    <a href="#all" data-filter="all" class="active">All Recipes</a>
+    <a href="#savory" data-filter="savory">Savory</a>
+    <a href="#breakfast" data-filter="breakfast">Breakfast</a>
+    <a href="#cycling" data-filter="cycling">Cycling Recipes</a>
   </nav>
 </header>
+<div class="results" id="results"></div>
 <div class="hero">
   <div class="hero-in">
     <div class="hero-txt">
-      <div class="tag">Papito's Kitchen — Recipes</div>
+      <div class="tag">Recipe of the house</div>
       <h1>Delicious Lemongrass Basil Chicken Stir Fry</h1>
       <p>His own wok dinner — chicken, lemongrass and basil. Every recipe is right here: pick a tab, tap a card, it opens on its own page.</p>
       <a class="btn" href="cookbox/recipes/lemongrass-basil-chicken-stir-fry.html">See Recipe</a>
@@ -77,17 +84,9 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <div class="hero-img"><img src="cookbox/assets/stir-fry.jpg" alt="Lemongrass Basil Chicken Stir Fry"></div>
   </div>
 </div>
-<div class="searchbar"><input id="search" type="search" placeholder="Search all recipes…" aria-label="Search all recipes"></div>
-<div class="results" id="results"></div>
-<nav class="tabs main">
-  <button data-tab="savory" class="active">Savory</button>
-  <button data-tab="breakfast">Breakfast</button>
-  <button data-tab="cycling">Cycling Recipes</button>
-</nav>
 <main>
-  <section class="tab active" id="tab-savory">
-   <div class="list">
-    <a class="card" href="cookbox/recipes/lemongrass-basil-chicken-stir-fry.html">
+  <div class="list">
+    <a class="card" data-cats="savory" href="cookbox/recipes/lemongrass-basil-chicken-stir-fry.html">
       <img src="cookbox/assets/stir-fry.jpg" alt="Lemongrass Basil Chicken Stir Fry">
       <div class="txt">
         <div class="meta">Savory</div>
@@ -96,7 +95,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/cuban-black-beans.html">
+    <a class="card" data-cats="savory" href="cookbox/recipes/cuban-black-beans.html">
       <img src="cookbox/assets/cuban-black-beans.jpg" alt="Cuban Black Beans">
       <div class="txt">
         <div class="meta">Savory</div>
@@ -105,7 +104,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/black-bean-chimichangas.html">
+    <a class="card" data-cats="savory" href="cookbox/recipes/black-bean-chimichangas.html">
       <img src="cookbox/assets/black-bean-chimichangas.jpg" alt="Black Bean Chimichangas">
       <div class="txt">
         <div class="meta">Savory</div>
@@ -114,7 +113,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/ritz-cracker-meatloaf.html">
+    <a class="card" data-cats="savory" href="cookbox/recipes/ritz-cracker-meatloaf.html">
       <img src="cookbox/assets/meatloaf.jpg" alt="Ritz Cracker Meatloaf">
       <div class="txt">
         <div class="meta">Savory</div>
@@ -123,7 +122,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/instant-pot-cornbread.html">
+    <a class="card" data-cats="savory" href="cookbox/recipes/instant-pot-cornbread.html">
       <img src="cookbox/assets/cornbread.jpg" alt="Cornbread">
       <div class="txt">
         <div class="meta">Savory</div>
@@ -132,7 +131,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/pesto-fish.html">
+    <a class="card" data-cats="savory" href="cookbox/recipes/pesto-fish.html">
       <img src="cookbox/assets/pesto-fish.jpg" alt="Pesto Fish">
       <div class="txt">
         <div class="meta">Savory</div>
@@ -141,7 +140,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/instant-pot-jambalaya.html">
+    <a class="card" data-cats="savory" href="cookbox/recipes/instant-pot-jambalaya.html">
       <img src="cookbox/assets/jambalaya.jpg" alt="Jambalaya">
       <div class="txt">
         <div class="meta">Savory</div>
@@ -150,7 +149,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/salsa-canned.html">
+    <a class="card" data-cats="savory" href="cookbox/recipes/salsa-canned.html">
       <img src="cookbox/assets/salsa.jpg" alt="Salsa (Canned)">
       <div class="txt">
         <div class="meta">Savory</div>
@@ -159,11 +158,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-   </div>
-  </section>
-  <section class="tab" id="tab-breakfast">
-   <div class="list">
-    <a class="card" href="cookbox/recipes/pancake-mix.html">
+    <a class="card" data-cats="breakfast" href="cookbox/recipes/pancake-mix.html">
       <img src="cookbox/assets/pancake-mix.jpg" alt="Pancake Mix">
       <div class="txt">
         <div class="meta">Breakfast</div>
@@ -172,7 +167,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/pancakes.html">
+    <a class="card" data-cats="breakfast" href="cookbox/recipes/pancakes.html">
       <img src="cookbox/assets/pancakes.jpg" alt="Pancakes">
       <div class="txt">
         <div class="meta">Breakfast</div>
@@ -181,11 +176,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-   </div>
-  </section>
-  <section class="tab" id="tab-cycling">
-   <div class="list">
-    <a class="card" href="cycling-food/recipes/high-carb-energy-balls.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/high-carb-energy-balls.html">
       <img src="cycling-food/assets/high-carb-energy-balls.webp" alt="High Carb Energy Balls">
       <div class="txt">
         <div class="meta">Cycling Recipes · Solid · Drew Addis</div>
@@ -194,7 +185,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/maple-cinnamon-oat-recovery-bars.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/maple-cinnamon-oat-recovery-bars.html">
       <img src="cycling-food/assets/maple-cinnamon-oat-recovery-bars.webp" alt="Maple Cinnamon Oat Recovery Bars">
       <div class="txt">
         <div class="meta">Cycling Recipes · Solid · Drew Addis</div>
@@ -203,7 +194,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/savory-potato-cakes.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/savory-potato-cakes.html">
       <img src="cycling-food/assets/savory-potato-cakes.webp" alt="Savory Potato Cakes">
       <div class="txt">
         <div class="meta">Cycling Recipes · Solid · Drew Addis</div>
@@ -212,7 +203,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/sweet-potato-oat-bars.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/sweet-potato-oat-bars.html">
       <img src="cycling-food/assets/sweet-potato-oat-bars.webp" alt="Sweet Potato Oat Bars">
       <div class="txt">
         <div class="meta">Cycling Recipes · Solid · Drew Addis</div>
@@ -221,7 +212,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/low-carb-nut-bars.html">
+    <a class="card" data-cats="cycling" href="cookbox/recipes/low-carb-nut-bars.html">
       <img src="cycling-food/assets/mama-bear.jpg" alt="Low Carb Nut Bars">
       <div class="txt">
         <div class="meta">Cycling Recipes · Solid</div>
@@ -230,7 +221,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/no-bake-keto-granola-bars.html">
+    <a class="card" data-cats="cycling" href="cookbox/recipes/no-bake-keto-granola-bars.html">
       <img src="cycling-food/assets/keto-granola.jpg" alt="No-Bake Keto Granola Bars">
       <div class="txt">
         <div class="meta">Cycling Recipes · Solid</div>
@@ -239,7 +230,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/5-ingredient-protein-bars.html">
+    <a class="card" data-cats="cycling" href="cookbox/recipes/5-ingredient-protein-bars.html">
       <img src="cycling-food/assets/pb-protein.jpg" alt="5-Ingredient Protein Bars (No-Bake)">
       <div class="txt">
         <div class="meta">Cycling Recipes · Solid</div>
@@ -248,7 +239,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/protein-bars-low-carb.html">
+    <a class="card" data-cats="cycling" href="cookbox/recipes/protein-bars-low-carb.html">
       <img src="cycling-food/assets/wholesomeyum.jpg" alt="Protein Bars (Low Carb &amp;amp; Sugar Free)">
       <div class="txt">
         <div class="meta">Cycling Recipes · Solid</div>
@@ -257,7 +248,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/keto-granola-bars-with-coconut.html">
+    <a class="card" data-cats="cycling" href="cookbox/recipes/keto-granola-bars-with-coconut.html">
       <img src="cycling-food/assets/sweetashoney.jpg" alt="Keto Granola Bars with Coconut">
       <div class="txt">
         <div class="meta">Cycling Recipes · Solid</div>
@@ -266,7 +257,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cookbox/recipes/keto-chocolate-protein-bars.html">
+    <a class="card" data-cats="cycling" href="cookbox/recipes/keto-chocolate-protein-bars.html">
       <img src="cycling-food/assets/sugarfreemom.jpg" alt="Keto Chocolate Protein Bars (Nut Free)">
       <div class="txt">
         <div class="meta">Cycling Recipes · Solid</div>
@@ -275,7 +266,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/apple-date-energy-gel.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/apple-date-energy-gel.html">
       <img src="cycling-food/assets/apple-date-energy-gel.webp" alt="Apple Date Energy Gel">
       <div class="txt">
         <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
@@ -284,7 +275,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/beet-and-honey-gel.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/beet-and-honey-gel.html">
       <img src="cycling-food/assets/beet-and-honey-gel.webp" alt="Beet &amp;amp; Honey Gel">
       <div class="txt">
         <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
@@ -293,7 +284,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/grape-molasses-energy-gel.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/grape-molasses-energy-gel.html">
       <img src="cycling-food/assets/grape-molasses-energy-gel.webp" alt="Grape Molasses Energy Gel">
       <div class="txt">
         <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
@@ -302,7 +293,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/mango-gel.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/mango-gel.html">
       <img src="cycling-food/assets/mango-gel.webp" alt="Mango Gel">
       <div class="txt">
         <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
@@ -311,7 +302,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/orange-maple-honey-gel.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/orange-maple-honey-gel.html">
       <img src="cycling-food/assets/orange-maple-honey-gel.webp" alt="Orange Maple Honey Gel">
       <div class="txt">
         <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
@@ -320,7 +311,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/pineapple-gel.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/pineapple-gel.html">
       <img src="cycling-food/assets/pineapple-gel.webp" alt="Pineapple Gel">
       <div class="txt">
         <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
@@ -329,7 +320,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/watermelon-gel.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/watermelon-gel.html">
       <img src="cycling-food/assets/watermelon-gel.webp" alt="Watermelon Gel">
       <div class="txt">
         <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
@@ -338,7 +329,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-    <a class="card" href="cycling-food/recipes/natural-electrolyte-drink.html">
+    <a class="card" data-cats="cycling" href="cycling-food/recipes/natural-electrolyte-drink.html">
       <img src="cycling-food/assets/natural-electrolyte-drink.webp" alt="Natural Electrolyte Drink">
       <div class="txt">
         <div class="meta">Cycling Recipes · Liquid · Drew Addis</div>
@@ -347,8 +338,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
         <div class="more"><span>Read more →</span></div>
       </div>
     </a>
-   </div>
-  </section>
+  </div>
 </main>
 <footer>recipes.gregorioramirez.com</footer>
 <script>
@@ -366,26 +356,15 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
   });
 </script>
 <script>
-  document.querySelectorAll('nav.main button').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      document.querySelectorAll('nav.main button').forEach(function (b) { b.classList.remove('active'); });
-      document.querySelectorAll('section.tab').forEach(function (s) { s.classList.remove('active'); });
-      btn.classList.add('active');
-      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-    });
-  });
-  function gotoTab(name) {
-    var b = document.querySelector('nav.main button[data-tab="' + name + '"]');
-    if (b) { b.click(); }
+  function applyFilter(name) {
+    if (['all', 'savory', 'breakfast', 'cycling'].indexOf(name) < 0) { name = 'all'; }
+    document.querySelectorAll('[data-filter]').forEach(function (a) { a.classList.toggle('active', a.dataset.filter === name); });
+    document.querySelectorAll('.list .card').forEach(function (c) { c.style.display = (name === 'all' || c.dataset.cats === name) ? '' : 'none'; });
   }
-  document.querySelectorAll('[data-goto]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      e.preventDefault();
-      gotoTab(a.dataset.goto);
-      history.replaceState(null, '', '#' + a.dataset.goto);
-    });
+  document.querySelectorAll('[data-filter]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); applyFilter(a.dataset.filter); history.replaceState(null, '', '#' + a.dataset.filter); });
   });
-  if (location.hash) { gotoTab(location.hash.slice(1)); }
+  applyFilter(location.hash ? location.hash.slice(1) : 'all');
 </script>
 </body>
 </html>
