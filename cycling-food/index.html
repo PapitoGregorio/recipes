@@ -13,6 +13,14 @@
 .gnav nav a{font-weight:600;font-size:15px;text-decoration:none}
 .gnav nav a:hover{color:#40ba37}
 .gnav nav a.active{color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
+.searchbar{max-width:1080px;margin:22px auto 0;padding:0 24px}
+.searchbar input{width:100%;font:inherit;font-size:16px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);outline:none}
+.searchbar input:focus{border-color:var(--accent)}
+.results{max-width:1080px;margin:14px auto 0;padding:0 24px;display:none}
+.results a{display:flex;justify-content:space-between;gap:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 18px;margin-bottom:8px;text-decoration:none;color:var(--ink)}
+.results .rt{font-weight:700;font-size:15.5px}
+.results .rc{color:var(--accent);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;white-space:nowrap;padding-top:3px}
+.results .none{color:var(--muted);text-align:center;padding:10px;font-size:15px}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
 a{color:inherit}
 header.site{max-width:1080px;margin:0 auto;padding:56px 24px 8px;text-align:center}
@@ -73,6 +81,8 @@ article.recipe .src a{color:var(--accent)}
     <a href="index.html" class="active">Cycling Recipes</a>
   </nav>
 </header>
+<div class="searchbar"><input id="search" type="search" placeholder="Search all recipes…" aria-label="Search all recipes"></div>
+<div class="results" id="results"></div>
 <header class="site">
   <h1>Cycling Recipes</h1>
   <p>Ride food and drinks — bars, gels, rice cakes, recovery drinks. Tap one and it opens on its own page.</p>
@@ -254,6 +264,21 @@ article.recipe .src a{color:var(--accent)}
   </section>
 </main>
 <footer>recipes.gregorioramirez.com</footer>
+<script>
+  const SEARCH_INDEX = /*SEARCH-INDEX-START*/[{"t": "Lemongrass Basil Chicken Stir Fry", "c": "Savory", "u": "cookbox/recipes/lemongrass-basil-chicken-stir-fry.html"}, {"t": "Cuban Black Beans", "c": "Savory", "u": "cookbox/recipes/cuban-black-beans.html"}, {"t": "Black Bean Chimichangas", "c": "Savory", "u": "cookbox/recipes/black-bean-chimichangas.html"}, {"t": "Ritz Cracker Meatloaf", "c": "Savory", "u": "cookbox/recipes/ritz-cracker-meatloaf.html"}, {"t": "Cornbread", "c": "Savory", "u": "cookbox/recipes/instant-pot-cornbread.html"}, {"t": "Pesto Fish", "c": "Savory", "u": "cookbox/recipes/pesto-fish.html"}, {"t": "Jambalaya", "c": "Savory", "u": "cookbox/recipes/instant-pot-jambalaya.html"}, {"t": "Salsa (Canned)", "c": "Savory", "u": "cookbox/recipes/salsa-canned.html"}, {"t": "Pancake Mix", "c": "Breakfast", "u": "cookbox/recipes/pancake-mix.html"}, {"t": "Pancakes", "c": "Breakfast", "u": "cookbox/recipes/pancakes.html"}, {"t": "Low Carb Nut Bars", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/low-carb-nut-bars.html"}, {"t": "No-Bake Keto Granola Bars", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/no-bake-keto-granola-bars.html"}, {"t": "5-Ingredient Protein Bars (No-Bake)", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/5-ingredient-protein-bars.html"}, {"t": "Protein Bars (Low Carb & Sugar Free)", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/protein-bars-low-carb.html"}, {"t": "Keto Granola Bars with Coconut", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/keto-granola-bars-with-coconut.html"}, {"t": "Keto Chocolate Protein Bars (Nut Free)", "c": "Cycling Recipes · Solid", "u": "cookbox/recipes/keto-chocolate-protein-bars.html"}, {"t": "Apple Date Energy Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/recipes/apple-date-energy-gel.html"}, {"t": "Beet & Honey Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/recipes/beet-and-honey-gel.html"}, {"t": "Grape Molasses Energy Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/recipes/grape-molasses-energy-gel.html"}, {"t": "High Carb Energy Balls", "c": "Cycling Recipes · Solid", "u": "cycling-food/recipes/high-carb-energy-balls.html"}, {"t": "Mango Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/recipes/mango-gel.html"}, {"t": "Maple Cinnamon Oat Recovery Bars", "c": "Cycling Recipes · Solid", "u": "cycling-food/recipes/maple-cinnamon-oat-recovery-bars.html"}, {"t": "Natural Electrolyte Drink", "c": "Cycling Recipes · Liquid", "u": "cycling-food/recipes/natural-electrolyte-drink.html"}, {"t": "Orange Maple Honey Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/recipes/orange-maple-honey-gel.html"}, {"t": "Pineapple Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/recipes/pineapple-gel.html"}, {"t": "Savory Potato Cakes", "c": "Cycling Recipes · Solid", "u": "cycling-food/recipes/savory-potato-cakes.html"}, {"t": "Sweet Potato Oat Bars", "c": "Cycling Recipes · Solid", "u": "cycling-food/recipes/sweet-potato-oat-bars.html"}, {"t": "Watermelon Gel", "c": "Cycling Recipes · Liquid", "u": "cycling-food/recipes/watermelon-gel.html"}]/*SEARCH-INDEX-END*/;
+  const SEARCH_PREFIX = "../";
+  const searchInput = document.getElementById('search');
+  const resultsBox = document.getElementById('results');
+  searchInput.addEventListener('input', function () {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) { resultsBox.style.display = 'none'; resultsBox.innerHTML = ''; return; }
+    const hits = SEARCH_INDEX.filter(function (r) { return r.t.toLowerCase().includes(q); }).slice(0, 12);
+    resultsBox.innerHTML = hits.length
+      ? hits.map(function (r) { return '<a href="' + SEARCH_PREFIX + r.u + '"><span class="rt">' + r.t + '</span><span class="rc">' + r.c + '</span></a>'; }).join('')
+      : '<div class="none">No recipes match that — try another word.</div>';
+    resultsBox.style.display = 'block';
+  });
+</script>
 <script>
   document.querySelectorAll('nav.tabs button').forEach(function (btn) {
     btn.addEventListener('click', function () {
