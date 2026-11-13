@@ -5,7 +5,7 @@
 <title>Recipes — Papito's Kitchen</title><style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--ink:#1f1d1c;--muted:#736f6d;--line:#e7e2dc;--accent:#40ba37;--bg:#ffffff}
-.gnav{max-width:1080px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.gnav{max-width:1080px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:60}
 .gnav .glogo{font-size:26px;font-weight:800;letter-spacing:-.02em;text-decoration:none}
 .gnav .glogo span{color:#40ba37}
 .gnav nav{margin-left:auto;display:flex;gap:26px;flex-wrap:wrap}
@@ -19,7 +19,7 @@
 .hero-in{max-width:1080px;margin:0 auto;padding:56px 24px;display:flex;align-items:center;gap:48px;flex-wrap:wrap}
 .hero-txt{flex:1;min-width:280px}
 .hero-txt .tag{color:var(--accent);font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:13px}
-.hero-txt h1{font-size:clamp(36px,5.4vw,56px);line-height:1.08;letter-spacing:-.02em;margin:14px 0 16px}
+.hero-txt h1{font-size:clamp(20px,2.7vw,28px);line-height:1.08;letter-spacing:-.02em;margin:14px 0 16px}
 .hero-txt p{color:var(--muted);font-size:17.5px;line-height:1.6;max-width:480px}
 .hero-txt .btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:15.5px;padding:14px 34px;border-radius:4px;margin-top:26px;text-decoration:none}
 .hero-img{flex:1;min-width:280px;text-align:center}
@@ -64,7 +64,6 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
 </style></head><body>
 <header class="gnav">
   <a class="glogo" href="index.html">Papito's<span>Kitchen</span></a>
-  <div class="gsearch"><input id="search" type="search" placeholder="Search all recipes…" aria-label="Search all recipes"></div>
   <nav>
     <a href="#all" data-filter="all" class="active">All Recipes</a>
     <a href="#savory" data-filter="savory">Savory</a>
@@ -72,6 +71,7 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
     <a href="#cycling" data-filter="cycling">Cycling Recipes</a>
   </nav>
 </header>
+<div class="searchbar"><input id="search" type="search" placeholder="Search all recipes…" aria-label="Search all recipes"></div>
 <div class="results" id="results"></div>
 <div class="hero">
   <div class="hero-in">
