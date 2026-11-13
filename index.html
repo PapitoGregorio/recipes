@@ -26,6 +26,15 @@ section.tab{display:none} section.tab.active{display:block}
 .card .more{margin-top:auto;padding-top:10px;font-weight:700;font-size:15px;color:var(--ink)}
 .card .more span{border-bottom:2px solid var(--accent);padding-bottom:2px}
 footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+.searchbar{max-width:560px;margin:26px auto 0;padding:0 24px}
+.searchbar input{width:100%;font:inherit;font-size:16px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);outline:none}
+.searchbar input:focus{border-color:var(--accent)}
+.results{max-width:760px;margin:14px auto 0;padding:0 24px;display:none}
+.results a{display:flex;justify-content:space-between;gap:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 18px;margin-bottom:8px;text-decoration:none}
+.results a:hover{border-color:var(--accent)}
+.results .rt{font-weight:700;font-size:15.5px}
+.results .rc{color:var(--accent);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;white-space:nowrap;padding-top:3px}
+.results .none{color:var(--muted);text-align:center;padding:10px;font-size:15px}
 @media (max-width:680px){
  .card{flex-direction:column;height:auto}
  .card img{width:100%;min-width:0;height:190px}
@@ -36,6 +45,8 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
   <h1>Recipes</h1>
   <p>Gregorio's kitchen books — private collection. Pick a tab, tap a book, and it opens.</p>
 </header>
+<div class="searchbar"><input id="search" type="search" placeholder="Search all recipes…" aria-label="Search all recipes"></div>
+<div class="results" id="results"></div>
 <nav class="tabs">
   <button data-tab="cookbox" class="active">Papito's Food Romance</button>
   <button data-tab="winter">Winter Bars</button>
@@ -89,6 +100,20 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
   </section>
 </main>
 <footer>recipes.gregorioramirez.com</footer>
+<script>
+  const SEARCH_INDEX = /*SEARCH-INDEX-START*/[{"t": "Lemongrass Basil Chicken Stir Fry", "c": "Papito's Food Romance", "u": "cookbox/recipes/lemongrass-basil-chicken-stir-fry.html"}, {"t": "Cuban Black Beans", "c": "Papito's Food Romance", "u": "cookbox/recipes/cuban-black-beans.html"}, {"t": "Ritz Cracker Meatloaf", "c": "Papito's Food Romance", "u": "cookbox/recipes/ritz-cracker-meatloaf.html"}, {"t": "Cornbread", "c": "Papito's Food Romance", "u": "cookbox/recipes/instant-pot-cornbread.html"}, {"t": "Pesto Fish", "c": "Papito's Food Romance", "u": "cookbox/recipes/pesto-fish.html"}, {"t": "Jambalaya", "c": "Papito's Food Romance", "u": "cookbox/recipes/instant-pot-jambalaya.html"}, {"t": "Pancake Mix", "c": "Papito's Food Romance", "u": "cookbox/recipes/pancake-mix.html"}, {"t": "Pancakes", "c": "Papito's Food Romance", "u": "cookbox/recipes/pancakes.html"}, {"t": "Salsa (Canned)", "c": "Papito's Food Romance", "u": "cookbox/recipes/salsa-canned.html"}, {"t": "Low Carb Nut Bars", "c": "Papito's Food Romance", "u": "cookbox/recipes/low-carb-nut-bars.html"}, {"t": "No-Bake Keto Granola Bars", "c": "Papito's Food Romance", "u": "cookbox/recipes/no-bake-keto-granola-bars.html"}, {"t": "5-Ingredient Protein Bars (No-Bake)", "c": "Papito's Food Romance", "u": "cookbox/recipes/5-ingredient-protein-bars.html"}, {"t": "Protein Bars (Low Carb & Sugar Free)", "c": "Papito's Food Romance", "u": "cookbox/recipes/protein-bars-low-carb.html"}, {"t": "Keto Granola Bars with Coconut", "c": "Papito's Food Romance", "u": "cookbox/recipes/keto-granola-bars-with-coconut.html"}, {"t": "Keto Chocolate Protein Bars (Nut Free)", "c": "Papito's Food Romance", "u": "cookbox/recipes/keto-chocolate-protein-bars.html"}, {"t": "Apple Date Energy Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#apple-date-energy-gel"}, {"t": "Beet & Honey Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#beet-and-honey-gel"}, {"t": "Grape Molasses Energy Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#grape-molasses-energy-gel"}, {"t": "Mango Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#mango-gel"}, {"t": "Molasses Apple Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#molasses-apple-gel"}, {"t": "Orange Fruit Spread Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#orange-fruit-spread-gel"}, {"t": "Orange Maple Honey Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#orange-maple-honey-gel"}, {"t": "Peach & Honey Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#peach-and-honey-gel"}, {"t": "Pineapple Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#pineapple-gel"}, {"t": "Watermelon Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#watermelon-gel"}, {"t": "Watermelon Lime Gel", "c": "Cycling Food · Gels", "u": "cycling-food/#watermelon-lime-gel"}, {"t": "Date Rice Cakes", "c": "Cycling Food · Solids", "u": "cycling-food/#date-rice-cakes"}, {"t": "High Carb Energy Balls", "c": "Cycling Food · Solids", "u": "cycling-food/#high-carb-energy-balls"}, {"t": "Maple Cinnamon Oat Recovery Bars", "c": "Cycling Food · Solids", "u": "cycling-food/#maple-cinnamon-oat-recovery-bars"}, {"t": "Savory Potato Cakes", "c": "Cycling Food · Solids", "u": "cycling-food/#savory-potato-cakes"}, {"t": "Sweet Potato Oat Bars", "c": "Cycling Food · Solids", "u": "cycling-food/#sweet-potato-oat-bars"}, {"t": "Sweet Potato Oat Cakes", "c": "Cycling Food · Solids", "u": "cycling-food/#sweet-potato-oat-cakes"}, {"t": "Sweet Potato Rice Cakes", "c": "Cycling Food · Solids", "u": "cycling-food/#sweet-potato-rice-cakes"}, {"t": "Tour de France Rice Cakes", "c": "Cycling Food · Solids", "u": "cycling-food/#tour-de-france-rice-cakes"}, {"t": "Natural Electrolyte Drink", "c": "Cycling Food · Drinks", "u": "cycling-food/#natural-electrolyte-drink"}, {"t": "Pre-Workout Energy Drink", "c": "Cycling Food · Drinks", "u": "cycling-food/#pre-workout-energy-drink"}, {"t": "Tart Cherry Recovery Drink", "c": "Cycling Food · Drinks", "u": "cycling-food/#tart-cherry-recovery-drink"}, {"t": "Winter Bars (Book)", "c": "Book", "u": "winter-bars/"}, {"t": "Endurance Fuel (Book PDF)", "c": "Book", "u": "books/endurance-fuel-recipe-book.pdf"}]/*SEARCH-INDEX-END*/;
+  const searchInput = document.getElementById('search');
+  const resultsBox = document.getElementById('results');
+  searchInput.addEventListener('input', function () {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) { resultsBox.style.display = 'none'; resultsBox.innerHTML = ''; return; }
+    const hits = SEARCH_INDEX.filter(function (r) { return r.t.toLowerCase().includes(q); }).slice(0, 12);
+    resultsBox.innerHTML = hits.length
+      ? hits.map(function (r) { return '<a href="' + r.u + '"><span class="rt">' + r.t + '</span><span class="rc">' + r.c + '</span></a>'; }).join('')
+      : '<div class="none">No recipes match that — try another word.</div>';
+    resultsBox.style.display = 'block';
+  });
+</script>
 <script>
   document.querySelectorAll('nav.tabs button').forEach(function (btn) {
     btn.addEventListener('click', function () {

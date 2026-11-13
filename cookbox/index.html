@@ -14,6 +14,9 @@ header.site p{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto;li
 nav.tabs{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);display:flex;justify-content:center;gap:6px;padding:12px 10px;z-index:5;flex-wrap:wrap;margin-top:28px}
 nav.tabs button{font:inherit;font-size:15px;font-weight:600;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:9px 20px;cursor:pointer}
 nav.tabs button.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.searchbar{max-width:560px;margin:26px auto 0;padding:0 24px}
+.searchbar input{width:100%;font:inherit;font-size:16px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);outline:none}
+.searchbar input:focus{border-color:var(--accent)}
 main{max-width:1080px;margin:0 auto;padding:34px 24px 70px}
 .list{display:flex;flex-direction:column;gap:26px}
 .card{display:flex;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;height:224px;text-decoration:none;transition:border-color .15s ease,transform .15s ease}
@@ -52,6 +55,7 @@ article.recipe .src a{color:var(--accent)}
   <h1>Papito's Food Romance</h1>
   <p>Home recipes of things I love — my own kitchen, collected. Pick a tab, tap a recipe, and it opens full-page in a new window.</p>
 </header>
+<div class="searchbar"><input id="search" type="search" placeholder="Search recipes…" aria-label="Search recipes"></div>
 <nav class="tabs">
   <button data-filter="all" class="active">All (15)</button>
   <button data-filter="savory" class="">Savory (7)</button>
@@ -211,6 +215,18 @@ buttons.forEach(b => b.addEventListener('click', () => {
   let shown = 0;
   cards.forEach(c => {
     const show = f === 'all' || c.dataset.cats.split(' ').includes(f);
+    c.style.display = show ? '' : 'none';
+    if (show) shown++;
+  });
+  empty.style.display = shown ? 'none' : 'block';
+}));
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.trim().toLowerCase();
+  if (!q) { document.querySelector('nav.tabs button.active').click(); return; }
+  let shown = 0;
+  cards.forEach(c => {
+    const show = c.textContent.toLowerCase().includes(q);
     c.style.display = show ? '' : 'none';
     if (show) shown++;
   });
