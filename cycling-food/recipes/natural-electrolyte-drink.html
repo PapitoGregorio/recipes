@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Natural Electrolyte Drink — Recipes</title><style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--ink:#1f1d1c;--muted:#736f6d;--line:#e7e2dc;--accent:#40ba37;--bg:#ffffff}
+:root{--ink:#000;--muted:#000;--line:#e7e2dc;--accent:#40ba37;--bg:#ffffff}
 .gnav{max-width:1080px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:60}
 .gnav .glogo{font-size:36px;font-weight:800;letter-spacing:-.02em;text-decoration:none;color:#000}
 .glogo span{color:#000}
@@ -14,31 +14,31 @@
 .gnav nav a.active{color:#000;box-shadow:inset 0 -2px 0 #000}
 .searchbar{max-width:1080px;margin:22px auto 0;padding:0 24px}
 .searchbar input{width:100%;font:inherit;font-size:16px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);outline:none}
-.searchbar input:focus{border-color:var(--accent)}
+.searchbar input:focus{border-color:#000}
 .results{max-width:1080px;margin:14px auto 0;padding:0 24px;display:none}
 .results a{display:flex;justify-content:space-between;gap:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 18px;margin-bottom:8px;text-decoration:none;color:var(--ink)}
 .results .rt{font-weight:700;font-size:17px}
-.results .rc{color:var(--accent);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;white-space:nowrap;padding-top:3px}
+.results .rc{color:#000;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;white-space:nowrap;padding-top:3px}
 .results .none{color:var(--muted);text-align:center;padding:10px;font-size:15px}
 body{font-size:18px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
 a{color:inherit}
 header.site{max-width:1080px;margin:0 auto;padding:56px 24px 8px;text-align:center}
-header.site .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:16px;color:var(--accent);font-weight:700;text-decoration:none}
+header.site .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:16px;color:#000;font-weight:700;text-decoration:none}
 header.site h1{font-size:clamp(20px,3vw,32px);font-weight:800;letter-spacing:-.02em;margin:12px 0 10px}
 header.site p{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto;line-height:1.55}
 nav.tabs{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);display:flex;justify-content:center;gap:6px;padding:12px 10px;z-index:5;flex-wrap:wrap;margin-top:28px}
 nav.tabs button{font:inherit;font-size:15px;font-weight:600;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:9px 20px;cursor:pointer}
-nav.tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+nav.tabs button.active{background:var(--accent);border-color:#000;color:#fff}
 .searchbar{max-width:560px;margin:26px auto 0;padding:0 24px}
 .searchbar input{width:100%;font:inherit;font-size:16px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);outline:none}
-.searchbar input:focus{border-color:var(--accent)}
+.searchbar input:focus{border-color:#000}
 main{max-width:1080px;margin:0 auto;padding:34px 24px 70px}
 .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px}
 .card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;transition:border-color .15s ease,transform .15s ease}
-.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card:hover{border-color:#000;transform:translateY(-2px)}
 .card img{width:100%;height:220px;object-fit:cover}
 .card .txt{flex:1;padding:20px 22px 24px;display:flex;flex-direction:column;text-align:center}
-.card .meta{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.card .meta{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#000;font-weight:700}
 .card h2{font-size:25px;line-height:1.2;margin:8px 0 8px;letter-spacing:-.01em}
 .card .preview{color:var(--muted);font-size:17.5px;line-height:1.55;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
 .card .more{margin-top:auto;padding-top:12px;font-weight:700;font-size:15px;color:var(--ink);align-self:center}
@@ -48,11 +48,11 @@ footer{text-align:center;padding:30px 20px 44px;color:var(--muted);font-size:13p
 /* recipe page */
 .hero{width:min(1032px,calc(100% - 48px));margin:14px auto 0;max-height:480px;object-fit:cover;display:block;border-radius:8px}
 article.recipe{max-width:1080px;margin:0 auto;padding:42px 24px 70px}
-article.recipe .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:12px;color:var(--accent);font-weight:700}
+article.recipe .kicker{letter-spacing:.28em;text-transform:uppercase;font-size:12px;color:#000;font-weight:700}
 article.recipe h1{font-size:clamp(32px,5vw,48px);letter-spacing:-.02em;line-height:1.12;margin:12px 0 10px}
 article.recipe .meta{color:var(--muted);font-size:16.5px}
 article.recipe .intro{color:var(--muted);font-size:19px;line-height:1.6;margin:18px 0 6px;max-width:720px}
-article.recipe h2{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:38px 0 14px}
+article.recipe h2{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:#000;margin:38px 0 14px}
 article.recipe ul,article.recipe ol{text-align:left;line-height:1.65;font-size:18.5px;padding-left:22px}
 .cols{display:flex;gap:44px;margin-top:26px;flex-wrap:wrap}
 .ing{flex:0 1 340px;background:#f3f5f1;border-radius:8px;padding:8px 30px 16px;height:fit-content}
@@ -63,7 +63,7 @@ article.recipe ul,article.recipe ol{text-align:left;line-height:1.65;font-size:1
 article.recipe li{margin-bottom:7px}
 article.recipe .note{color:var(--muted);font-style:italic;font-size:16px;line-height:1.6;max-width:720px;margin:26px 0 0}
 article.recipe .src{color:var(--muted);font-size:13px;margin-top:22px}
-article.recipe .src a{color:var(--accent)}
+article.recipe .src a{color:#000}
 .back{display:inline-block;margin-top:40px;font-weight:700;text-decoration:none;background:var(--accent);color:#fff;padding:14px 34px;border-radius:4px}
 @media (max-width:680px){
  .card{flex-direction:column;height:auto}
